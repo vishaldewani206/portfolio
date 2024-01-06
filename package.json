@@ -6,7 +6,7 @@
     "swiper": "^11.0.5"
   },
   "scripts": {
-    "watch": "tailwindcss -i ./input.css -o ./css/style.css --watch",
-    "build": "tailwindcss -i ./input.css -o ./css/style.css"
+    "watch": "tailwindcss -i ./src/input.css -o ../dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ../dist/output.css"
   }
 }
