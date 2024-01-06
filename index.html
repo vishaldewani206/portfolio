@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="twitter:title" content="Vishal Dewani Portfolio" />
+    <meta name="twitter:description" content="This is my Portfolio website." />
+    <meta name="twitter:image" content="/src/images/screenshot.png" />
+    <meta name="twitter:card" content="/src/images/screenshot.png" />
+    <title>Vishal Dewani | Portfolio</title>
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="src/images/logo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+        font-family: 'Raleway', sans-serif;
+      }
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body class="dark:bg-slate-950 dark:text-white bg-[#f8f8f8]">
+    <div class="container">
+      <!-- THEME TOGGLE -->
+      <div
+        class="absolute w-12 top-5 right-5 bg-primary rounded-full p-2 cursor-pointer hover:bg-blue-500 hover:scale-105 transition-all"
+      >
+        <img
+          src="src/images/brightness.png"
+          alt=""
+          class="w-full mode"
+          id="mode"
+          onclick="changeMode(this)"
+        />
+      </div>
+      <!-- LANDING PAGE -->
+      <section class="md:flex md:justify-evenly mb-[100px] mt-[100px]">
+        <div class="md:order-2">
+          <img
+            class="px-16 md:px-0 md:w-[24rem] md:ms-5 mainImg"
+            src="src/images/Coder.svg"
+            alt="guy using laptop"
+          />
+        </div>
+        <div class="md:flex md:flex-col md:justify-center md:text-left">
+          <h1
+            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+            id="heading"
+            class="text-4xl md:text-6xl font-bold text-center md:text-left mb-2 mt-6 md:mt-0"
+          >
+            Vishal Dewani
+          </h1>
+          <h2
+            class="text-center md:text-left text-xl md:text-2xl md:ms-2 md:mb-6 title"
+          >
+            Frontend Developer
+          </h2>
+          <div class="text-center md:text-left my-4">
+            <a href="#contact">
+              <button
+                class="bg-primary px-4 py-2 rounded font-bold me-[25px] hover:bg-blue-900 hover-border btn1"
+              >
+                Contact Now
+              </button>
+            </a>
+            <a href="#projects">
+              <button
+                class="btn2 border-2 border-primary px-4 py-2 rounded hover:bg-primary"
+              >
+                View Projects
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- BANNER -->
+      <section
+        class="text-center dark:bg-slate-900 bg-blue-200 p-12 absolute w-full left-0"
+      >
+        <h3 class="text-2xl md:text-4xl mb-6 second-heading">
+          Get In Touch On Fiverr
+        </h3>
+        <a href="#contact">
+          <button
+            class="bg-primary px-4 py-2 md:px-6 md:py-3 md:text-xl rounded font-bold me-2 border border-transparent hover:border-blue-200 btn3"
+          >
+            Contact Now
+          </button>
+        </a>
+      </section>
+      <!-- ABOUT ME  -->
+      <section class="text-center mt-[26rem]">
+        <h1 class="text-4xl md:text-6xl mb-12 font-bold about">About Me</h1>
+        <div
+          class="dark:bg-slate-900 bg-blue-200 rounded-xl p-6 md:flex md:w-full md:justify-center"
+        >
+          <div class="md:w-1/3 md:flex md:justify-center">
+            <img
+              src="src/images/Online-reviews.svg"
+              alt="guy using his laptop"
+              class="p-5 md:p-0 md:me-5 img"
+            />
+          </div>
+          <div class="md:w-1/2 flex justify-center">
+            <p class="md:text-lg md:text-left md:leading-loose paragraph">
+              With more than 4 years of experience under my belt, I am a skilled
+              web developer and designer who can create fully responsive
+              websites. My expertise includes using various tools like HTML,
+              CSS, Javascript, React, Bootstrap and Figma to design and code
+              visually appealing websites. Overall, my background in web
+              development is comprehensive and well-rounded.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- SKILLS  -->
+      <section class="text-center mt-[100px]">
+        <h1 class="text-3xl md:text-6xl mb-7 font-bold third-heading">
+          My Skills
+        </h1>
+        <div class="flex flex-wrap justify-center">
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3"
+          >
+            <img src="src/images/html-logo.png" alt="html logo" class="" />
+            <h3 class="text-xl font-bold">HTML</h3>
+          </div>
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3 flex flex-col justify-center items-center"
+          >
+            <img
+              src="src/images/css-logo.png"
+              alt="css3 logo"
+              class="w-1/2 my-4"
+            />
+            <h3 class="text-xl font-bold">CSS3</h3>
+          </div>
+
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3 flex flex-col justify-center items-center"
+          >
+            <img
+              src="src/images/javascript-logo.png"
+              alt="JavaScript logo"
+              class="w-1/2 my-4"
+            />
+            <h3 class="text-xl font-bold">JavaScript</h3>
+          </div>
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3 flex flex-col justify-center items-center"
+          >
+            <img
+              src="src/images/react-logo.png"
+              alt="react logo"
+              class="w-1/2 my-4"
+            />
+            <h3 class="text-xl font-bold">React</h3>
+          </div>
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3 flex flex-col justify-center items-center"
+          >
+            <img
+              src="src/images/bootstrap-logo.png"
+              alt="bootstrap logo"
+              class="w-1/2 my-4"
+            />
+            <h3 class="text-xl font-bold">Bootstrap</h3>
+          </div>
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3 flex flex-col justify-center items-center"
+          >
+            <img
+              src="src/images/tailwind-logo.png"
+              alt="tailwind logo"
+              class="w-1/2 my-4"
+            />
+            <h3 class="text-xl font-bold">Tailwind Css</h3>
+          </div>
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3 flex flex-col justify-center items-center"
+          >
+            <img src="src/images/git.png" alt="git logo" class="w-1/2 my-4" />
+            <h3 class="text-xl font-bold">Git</h3>
+          </div>
+          <div
+            class="w-1/3 md:w-1/5 box dark:bg-slate-900 bg-blue-200 rounded-xl pb-3 m-3 flex flex-col justify-center items-center"
+          >
+            <img
+              src="src/images/linux.png"
+              alt="linux logo"
+              class="w-1/2 my-4"
+            />
+            <h3 class="text-xl font-bold">Linux</h3>
+          </div>
+        </div>
+      </section>
+      <!-- PROJECTS  -->
+      <section class="mt-[100px]" id="projects">
+        <h1
+          class="text-3xl md:text-6xl text-center mb-7 font-bold forth-heading"
+        >
+          My Projects
+        </h1>
+        <div class="swiper my-10 mySwiper project">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper text-black">
+            <!-- Slides 
+              
+            -->
+            <div
+              class="swiper-slide flex flex-col group rounded-lg overflow-hidden justify-center items-center"
+            >
+              <a href="https://empire-store.pages.dev/" target="_blank"
+                ><img
+                  src="src/images/empire.png"
+                  alt=""
+                  class="aspect-square hover:brightness-50"
+                />
+                <p class="invisible group-hover:visible text-xl font-bold">
+                  Empire Online Store
+                </p></a
+              >
+            </div>
+
+            <div
+              class="swiper-slide flex flex-col group rounded-lg overflow-hidden justify-center items-center"
+            >
+              <a href="https://moviemaina.pages.dev/" target="_blank"
+                ><img
+                  src="src/images/moviemaina.png"
+                  alt="moviemaina"
+                  class="aspect-square hover:brightness-50"
+                />
+                <p class="invisible group-hover:visible text-xl font-bold">
+                  Moviemaina | Find Out New Movies
+                </p></a
+              >
+            </div>
+
+            <div
+              class="swiper-slide flex flex-col group rounded-lg overflow-hidden justify-center items-center"
+            >
+              <a
+                href="https://vishaldewani206.github.io/pupSnap/"
+                target="_blank"
+                ><img
+                  src="src/images/pupSnap.png"
+                  alt="pupSnap"
+                  class="aspect-square hover:brightness-50"
+                />
+                <p class="invisible group-hover:visible text-xl font-bold">
+                  PupSnap | Pets Pictures api
+                </p></a
+              >
+            </div>
+
+            <div
+              class="swiper-slide flex flex-col group rounded-lg overflow-hidden justify-center items-center"
+            >
+              <a href="https://skytracker.pages.dev/" target="_blank"
+                ><img
+                  src="src/images/skytracker.png"
+                  alt="skytracker"
+                  class="aspect-square hover:brightness-50"
+                />
+                <p class="invisible group-hover:visible text-xl font-bold">
+                  SkyTracker | weather
+                </p></a
+              >
+            </div>
+
+            <div
+              class="swiper-slide flex flex-col group rounded-lg overflow-hidden justify-center items-center"
+            >
+              <a
+                href="https://vishaldewani206.github.io/sunnyside-agency/"
+                target="_blank"
+                ><img
+                  src="src/images/sunnyside.png"
+                  alt="sunnyside agency"
+                  class="aspect-square hover:brightness-50"
+                />
+                <p class="invisible group-hover:visible text-xl font-bold">
+                  sunnyside Agency | a Frontend Mentor Challenge
+                </p></a
+              >
+            </div>
+
+            <div
+              class="swiper-slide flex flex-col group rounded-lg overflow-hidden justify-center items-center"
+            >
+              <a
+                href="https://vishaldewani206.github.io/quote-generator/"
+                target="_blank"
+                ><img
+                  src="src/images/quote-generator.png"
+                  alt="sunnyside agency"
+                  class="aspect-square hover:brightness-50"
+                />
+                <p class="invisible group-hover:visible text-xl font-bold">
+                  Quote Generator| quote api
+                </p></a
+              >
+            </div>
+
+            <div
+              class="swiper-slide flex flex-col group rounded-lg overflow-hidden justify-center items-center"
+            >
+              <a
+                href="https://vishaldewani206.github.io/age-calculator/"
+                target="_blank"
+                ><img
+                  src="src/images/age-calculator.png"
+                  alt="age Calculator"
+                  class="aspect-square hover:brightness-50"
+                />
+                <p class="invisible group-hover:visible text-xl font-bold">
+                  Age Calculator | A Frontend Mentor Challenge
+                </p></a
+              >
+            </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </section>
+
+      <!-- CONTACT ME  -->
+      <section class="text-center mt-[100px]" id="contact">
+        <h1 class="text-3xl mb-3 font-bold md:text-6xl fifth-heading">
+          Contact Me
+        </h1>
+        <div class="flex justify-center contact">
+          <a href="mailto:vishaldewani164@gmail.com" class="flex justify-end">
+            <img
+              src="src/images/gmail.png"
+              class="w-1/3 md:w-1/6 p-4 hover:scale-105 transition-all"
+              alt=""
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/vcodes8"
+            class="flex justify-start"
+          >
+            <img
+              src="src/images/instagram.png"
+              class="w-1/3 md:w-1/6 p-4 hover:scale-105 transition-all"
+              alt=""
+            />
+          </a>
+        </div>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+      integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+      integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="src/script.js"></script>
+  </body>
+</html>
