@@ -95,6 +95,41 @@ function changeMode(e) {
   }
 }
 const myText = new SplitType('#heading');
+gsap.from('#head', {
+  rotate: 5,
+  duration: 1,
+  repeat: -1,
+  yoyo: true,
+  ease: 'linear',
+  transformOrigin: 'center',
+});
+gsap.from('#right-hand', {
+  rotate: 2,
+  duration: 1,
+  delay: 0.2,
+  repeat: -1,
+  yoyo: true,
+  ease: 'linear',
+  transformOrigin: 'center',
+});
+gsap.from('#left-leg', {
+  rotate: 2,
+  duration: 1,
+  delay: 0.4,
+  repeat: -1,
+  yoyo: true,
+  ease: 'linear',
+  transformOrigin: 'center',
+});
+gsap.from(['#left-eye', '#right-eye'], {
+  scaleY: 0.5,
+  duration: 1,
+  delay: 1,
+  repeat: -1,
+  yoyo: true,
+  ease: 'linear',
+  transformOrigin: 'center',
+});
 
 //GSAP ANIMATIONS
 var tl = gsap.timeline();
