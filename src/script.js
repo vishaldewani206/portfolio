@@ -7,7 +7,11 @@ window.addEventListener('load', () => {
       slidesPerView: 1,
       spaceBetween: 30,
       freeMode: true,
+      mousewheel: true,
       loop: true,
+      autoplay: {
+        delay: 2000,
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -23,6 +27,9 @@ window.addEventListener('load', () => {
       spaceBetween: 30,
       freeMode: true,
       loop: true,
+      autoplay: {
+        delay: 2000,
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -41,6 +48,9 @@ window.addEventListener('resize', () => {
       spaceBetween: 30,
       freeMode: true,
       loop: true,
+      autoplay: {
+        delay: 2000,
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -56,6 +66,9 @@ window.addEventListener('resize', () => {
       spaceBetween: 30,
       freeMode: true,
       loop: true,
+      autoplay: {
+        delay: 2000,
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
