@@ -22,7 +22,7 @@ This is my personal portfolio website where I showcase my **projects, skills, an
 ## 📂 Installation
 To run locally:
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/vishaldewani206/portfolio
 cd portfolio
 npm install
-npm start
+npm run dev
