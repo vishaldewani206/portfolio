@@ -11,7 +11,9 @@ const Navbar = () => {
     <div className='px-5 py-3  z-10'>
         <div className='flex justify-between  items-center'>
             <Link to={"/"} className='p-3 cursor-pointer border rounded-full'>
-                <h1>Vishal</h1>
+                <h1>
+                    <img src={"/logo.png"} alt="" className='w-6 h-6' />
+                </h1>
             </Link>
             <div
   className={`absolute z-10 md:static top-20 left-5 w-[90%] md:w-auto py-3 px-8 rounded-4xl border bg-white dark:bg-zinc-950 
