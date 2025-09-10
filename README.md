@@ -13,17 +13,9 @@ This is my personal portfolio website where I showcase my **projects, skills, an
 - **Frontend:** HTML, CSS, JavaScript, React, Tailwind  
 - **Animations:** GSAP / Framer Motion  
 <!--- **Deployment:** Vercel / Netlify / GitHub Pages  -->
-
-<!-- ## 📷 Preview
+ ## 📷 Preview
 ![Portfolio Preview](./preview.png)
 
 ## 🌍 Live Demo
-👉 [View Website](https://your-portfolio-link.com)  -->
+👉 [View Website](https://vishal-dewani.vercel.app/)  
 
-## 📂 Installation
-To run locally:
-```bash
-git clone https://github.com/vishaldewani206/portfolio
-cd portfolio
-npm install
-npm run dev
