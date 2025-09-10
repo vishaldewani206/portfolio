@@ -14,7 +14,7 @@ const Navbar = () => {
                 <h1>Vishal</h1>
             </Link>
             <div
-  className={`absolute z-10 md:static top-20 left-5 w-[90%] md:w-auto py-3 px-8 rounded-4xl border bg-white 
+  className={`absolute z-10 md:static top-20 left-5 w-[90%] md:w-auto py-3 px-8 rounded-4xl border bg-white dark:bg-zinc-950 
   flex md:flex-row flex-col justify-center transition-all duration-300 space-y-3 md:space-y-0 md:space-x-3
   ${open ? "flex" : "hidden"} md:flex`}
 >
@@ -31,17 +31,17 @@ const Navbar = () => {
       className="cursor-pointer w-8 h-6 flex flex-col justify-between items-center md:hidden"
     >
       <span
-        className={`h-1 w-8 rounded-full bg-black transform transition duration-300 ease-in-out ${
+        className={`h-1 w-8 rounded-full bg-black dark:bg-white transform transition duration-300 ease-in-out ${
           open ? "rotate-45 translate-y-2.5" : ""
         }`}
       />
       <span
-        className={`h-1 w-8 rounded-full bg-black transition duration-300 ease-in-out ${
+        className={`h-1 w-8 rounded-full bg-black dark:bg-white transition duration-300 ease-in-out ${
           open ? "opacity-0" : ""
         }`}
       />
       <span
-        className={`h-1 w-8 rounded-full bg-black transform transition duration-300 ease-in-out ${
+        className={`h-1 w-8 rounded-full bg-black dark:bg-white transform transition duration-300 ease-in-out ${
           open ? "-rotate-45 -translate-y-2.5" : ""
         }`}
       />
