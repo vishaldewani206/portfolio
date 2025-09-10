@@ -32,7 +32,7 @@ const Skills = () => {
 
 			<div className="flex md:flex-row flex-col mt-4 gap-4">
 				<div className="flex-1 border border-primary rounded-xl p-3">
-					<h3 className="text-white text-2xl font-medium mb-3">
+					<h3 className="dark:text-white text-2xl font-medium mb-3">
 						Frontend Development
 					</h3>
 					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
@@ -75,7 +75,7 @@ const Skills = () => {
 					</div>
 				</div>
 				<div className="flex-1 border border-primary rounded-xl p-3">
-					<h3 className="text-white text-2xl font-medium mb-3">
+					<h3 className="dark:text-white text-2xl font-medium mb-3">
 						Backend Development
 					</h3>
 					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
@@ -107,7 +107,7 @@ const Skills = () => {
 
 
       <div className="mt-4">
-					<h3 className="text-white text-2xl font-medium mb-3">
+					<h3 className="dark:text-white text-2xl font-medium mb-3">
 						Other Skills
 					</h3>
         <div className="flex-1 border border-primary rounded-xl p-3">
