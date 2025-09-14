@@ -3,13 +3,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdEmail } from "react-icons/md";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-<<<<<<< HEAD
 import Transition from "../utils/Transition";
-
-
-=======
 import Swal from "sweetalert2";
->>>>>>> master
 
 function Contact() {
 	const { register, reset, handleSubmit } = useForm();
