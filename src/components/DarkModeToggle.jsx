@@ -31,7 +31,7 @@ const onClickWrapper = (onClickMethod, isDark, event) => {
 
 const DarkModeToggle = ({ isDark, onClickMethod }) => {
   return (
-    <div className="relative bg-blue-200 p-1 rounded-full w-32 flex justify-between transition-all">
+    <div className="relative dark:bg-zinc-800 bg-blue-200 p-1 rounded-full w-32 flex justify-between transition-all">
       {/* Sliding background */}
       <div
         className={`absolute top-1 left-1.5 w-14 h-7 rounded-full bg-primary transition-transform duration-300 ${
@@ -41,17 +41,17 @@ const DarkModeToggle = ({ isDark, onClickMethod }) => {
 
       <button
         className={`relative z-10 px-4 py-1 rounded-full text-sm font-semibold ${
-          !isDark ? "text-white" : "text-primary"
+          !isDark ? "text-white" : "text-primary dark:text-blue-200"
         }`}
-        onClick={() => onClickMethod(false)}
+        onClick={isDark ? ((event) => onClickWrapper(onClickMethod, !isDark, event)) : null}
       >
         Light
       </button>
       <button
         className={`relative z-10 px-4 py-1 rounded-full text-sm font-semibold ${
-          isDark ? "text-white" : "text-primary"
+          isDark ? "text-white" : "text-primary dark:text-blue-200"
         }`}
-        onClick={() => onClickMethod(true)}
+        onClick={!isDark ? ((event) => onClickWrapper(onClickMethod, isDark, event)) : null}
       >
         Dark
       </button>
