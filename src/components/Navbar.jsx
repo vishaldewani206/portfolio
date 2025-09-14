@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import DarkModeToggle from "./DarkModeToggle";
 import storage from "local-storage-fallback";
-import GrowingCircleCanvas from "./GrowingCircleCanvas";
 
-const Navbar = ({ isDark, setIsDark, setIsLoad, isLoad }) => {
+const Navbar = ({ isDark, setIsDark, setIsLoad }) => {
 	const { pathname } = useLocation();
 	const [open, setOpen] = useState(false);
 

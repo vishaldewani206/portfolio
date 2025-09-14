@@ -10,7 +10,7 @@ const Project = ({title,description, image, link}) => {
         <p className='p-3 text-left'>{description}</p>
         </div>
         <div className='absolute  bottom-0 opacity-0 group-hover:opacity-100 transition-all bg-gray-800/40 p-2  w-full h-full' />
-        <HiExternalLink className='absolute right-5 top-4 text-5xl group-hover:scale-110 group-hover:text-white transition-transform md:text-gray-400 bg-primary p-2 rounded-full' />
+        <HiExternalLink className='absolute md:right-5 md:top-4 top-2 right-1 md:text-5xl text-2xl group-hover:scale-110 group-hover:text-white transition-transform md:text-gray-400 bg-primary md:p-2 p-1 rounded-full' />
 
     </a>
   )

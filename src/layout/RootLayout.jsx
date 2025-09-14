@@ -14,7 +14,7 @@ const RootLayout = () => {
     <div className={`w-full flex flex-col  ${isLoad && "transition-colors duration-500 delay-300"}`}>
       <GrowingCircleCanvas isLoad={isLoad} isDark={isDark} />
 
-        <Navbar isDark={isDark} setIsDark={setIsDark} isLoad={isLoad} setIsLoad={setIsLoad} />
+        <Navbar isDark={isDark} setIsDark={setIsDark}  setIsLoad={setIsLoad} />
         <div className="lg:container p-3 md:p-5 m-auto ">
           <AnimatePresence mode='wait'>
             <Outlet key={location} />
