@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdEmail } from "react-icons/md";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Transition from "../utils/Transition";
 
 
 
@@ -78,5 +79,6 @@ function Contact() {
      </div>
   );
 }
+const WrappedContact = Transition(Contact)
 
-export default Contact;
+export default WrappedContact

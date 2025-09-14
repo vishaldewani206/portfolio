@@ -1,106 +1,96 @@
 import React from "react";
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io5";
-import { TbBrandReactNative } from "react-icons/tb";
-
-
-import {
-	SiTailwindcss,
-	SiFramer,
-	SiGreensock,
-	SiExpress,
-	SiAppwrite,
-  SiAdobeillustrator
-} from "react-icons/si";
-import {
-	BiLogoTypescript,
-	BiLogoMongodb,
-	BiLogoPostgresql,
-} from "react-icons/bi";
+import {motion} from 'framer-motion'
 
 
 import SkillsCapsule from "../components/SkillsCapsule";
+import Transition from "../utils/Transition";
+import {skillsBackend, skillsFrontend, skillsOther} from "../utils/skills.js"
 
 const Skills = () => {
+	const v = {
+  initial: { opacity: 0, y: 10 },   // ✅ correct spelling
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 10 }
+};
+
+const parent = {
+  initial: { opacity: 1 },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+	  delayChildren:0.5
+    },
+  },
+};
+
+const child = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+};
 	return (
 		<div className="text-center flex flex-col justify-center">
-			<h1 className="text-center text-5xl font-medium font-heading text-primary">
+			<motion.h1 
+			variants={v}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+			className="text-center text-5xl font-medium font-heading text-primary">
 				My Skills
-			</h1>
+			</motion.h1>
 
-			<h2 className="mt-5 text-3xl">FullStack Development</h2>
+			<motion.h2 
+			variants={v}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+			  transition={{delay:0.2}}
+			className="mt-5 text-3xl">FullStack Development</motion.h2>
 
 			<div className="flex md:flex-row flex-col mt-4 gap-4">
 				<div className="flex-1 border border-primary rounded-xl p-3">
 					<h3 className="dark:text-white text-2xl font-medium mb-3">
 						Frontend Development
 					</h3>
-					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
-						<SkillsCapsule
-							text={"HTML"}
-							Icon={FaHtml5}
-							color={"text-orange-400"}
-						/>
-						<SkillsCapsule
-							text={"CSS"}
-							Icon={FaCss3Alt}
-							color={"text-blue-600"}
-						/>
-						<SkillsCapsule
-							text={"JavaScript"}
-							Icon={IoLogoJavascript}
-							color={"text-yellow-300"}
-						/>
-						<SkillsCapsule
-							text={"Tailwind"}
-							Icon={SiTailwindcss}
-							color={"text-blue-300"}
-						/>
-						<SkillsCapsule
-							text={"ReactJs"}
-							Icon={FaReact}
-							color={"text-blue-400"}
-						/>
-						<SkillsCapsule
-							text={"TypeScript"}
-							Icon={BiLogoTypescript}
-							color={"text-blue-500"}
-						/>
-						<SkillsCapsule
-							text={"GSAP"}
-							Icon={SiGreensock}
-							color={"text-green-400 "}
-						/>
-						<SkillsCapsule text={"Framer Motion"} Icon={SiFramer} />
-					</div>
+					<motion.div 
+					variants={parent}
+					initial="initial"
+					animate="animate"
+					className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
+						{skillsFrontend.map((e,i)=>(
+							<motion.div 
+							variants={child}
+							 key={i}>
+								<SkillsCapsule
+								text={e.text}
+								Icon={e.icon}
+								color={e.color}
+							/>
+							</motion.div>
+						))}
+					</motion.div>
 				</div>
 				<div className="flex-1 border border-primary rounded-xl p-3">
 					<h3 className="dark:text-white text-2xl font-medium mb-3">
 						Backend Development
 					</h3>
-					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
-						<SkillsCapsule
-							text={"MongoDB"}
-							Icon={BiLogoMongodb}
-							color={"text-green-400"}
-						/>
-						<SkillsCapsule text={"Express"} Icon={SiExpress} />
-						<SkillsCapsule
-							text={"NodeJs"}
-							Icon={FaNodeJs}
-							color={"text-green-500"}
-						/>
-						<SkillsCapsule
-							text={"PostgresSQL"}
-							Icon={BiLogoPostgresql}
-							color={"text-blue-400"}
-						/>
-						<SkillsCapsule
-							text={"AppWrite"}
-							Icon={SiAppwrite}
-							color={"text-red-500"}
-						/>
-					</div>
+					<motion.div 
+					variants={parent}
+					initial="initial"
+					animate="animate"
+					className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
+						{skillsBackend.map((e,i)=>(
+							<motion.div 
+							variants={child}
+							key={i}>
+								<SkillsCapsule
+								text={e.text}
+								Icon={e.icon}
+								color={e.color}
+							/>
+							</motion.div>
+						))}
+					</motion.div>
 				</div>
 
 			</div>
@@ -111,33 +101,28 @@ const Skills = () => {
 						Other Skills
 					</h3>
         <div className="flex-1 border border-primary rounded-xl p-3">
-					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
-						<SkillsCapsule
-							text={"Git"}
-							Icon={FaGitAlt}
-							color={"text-orange-400"}
-						/>
-						<SkillsCapsule text={"Github"} Icon={FaGithub} />
-						<SkillsCapsule
-							text={"Figma"}
-							Icon={FaFigma}
-							color={"text-orange-500"}
-						/>
-						<SkillsCapsule
-							text={"React Native"}
-							Icon={TbBrandReactNative}
-							color={"text-sky-500"}
-						/>
-						<SkillsCapsule
-							text={"Adobe Illustrator"}
-							Icon={SiAdobeillustrator}
-							color={"text-orange-400"}
-						/>
-					</div>
+					<motion.div 
+					variants={parent}
+					initial="initial"
+					animate="animate"
+					className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
+						{skillsOther.map((e,i)=>(
+							<motion.div
+							variants={child}
+							key={i}>
+								<SkillsCapsule
+								text={e.text}
+								Icon={e.icon}
+								color={e.color}
+							/>
+							</motion.div>
+						))}
+					</motion.div>
           </div>
       </div>
 		</div>
 	);
 };
+const WrappedSkills = Transition(Skills)
 
-export default Skills;
+export default WrappedSkills

@@ -1,12 +1,17 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import { AnimatePresence } from "framer-motion"
 
 const RootLayout = () => {
+    const location = useLocation();
+
   return (
     <div className=''>
         <Navbar />
         <div className="container p-3 md:p-5">
-            <Outlet />
+          <AnimatePresence mode='wait'>
+            <Outlet key={location} />
+          </AnimatePresence>
         </div>
     </div>
   )
