@@ -8,7 +8,7 @@ export const PersonalDetails = () => {
     <div className='border mt-4 rounded-2xl p-4 flex md:flex-row flex-col justify-between '>
         <div className='flex-2 md:order-1 order-2'>
             <h1 className='text-5xl font-heading'>About Me</h1>
-        <p className='mt-2 md:text-lg md:w-[90%] text-zinc-600'>
+        <p className='mt-2 md:text-lg md:w-[90%] dark:text-zinc-400 text-zinc-600'>
             I am a Full-Stack Developer with a strong foundation in both frontend and backend technologies. 
             I specialize in building responsive, user-friendly interfaces with HTML, CSS, JavaScript, React, and Tailwind, while also working with Node.js and databases to develop robust backend systems.
             My goal is to create seamless digital experiences by combining clean design, efficient code, and scalable solutions. 

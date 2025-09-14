@@ -24,19 +24,28 @@ const child = {
 };
   return (
     <div className='text-center'>
-        <h1 className='text-center text-5xl font-medium font-heading text-primary mb-5'>My Projects</h1>
+        <motion.h1 
+        initial= {{ opacity: 0, y: 20 }}
+        animate= {{ opacity: 1, y: 0 }}
+        className='text-center text-5xl font-medium font-heading text-primary mb-5'>My Projects</motion.h1>
 
-        <div className='grid grid-cols-2 md:grid-cols-3 w-full gap-4 items-start'>
+        <motion.div 
+        variants={parent}
+        initial="initial"
+        animate="animate"
+        className='grid grid-cols-2 md:grid-cols-3 w-full gap-4 items-start'>
         
         {projects.map((e,i)=>(
-          <div key={i}>
+          <motion.div
+          variants={child}
+           key={i}>
             <Project title={e.name} description={e.description} image={e.image} link={e.link} />
-          </div>
+          </motion.div>
         ))}
 
 
 
-        </div>
+        </motion.div>
     </div>
   )
 }
