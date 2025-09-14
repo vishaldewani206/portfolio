@@ -1,6 +1,6 @@
 import React from 'react'
 import photo from "../assets/images/photo-2.png"
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 export const PersonalDetails = () => {
     // bg-gradient-to-r from-blue-50 to-blue-200
