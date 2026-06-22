@@ -1,21 +1,59 @@
+# Vishal Dewani — Portfolio Website
 
-# 🌐 My Portfolio Website
+A modern portfolio website designed to showcase my work, technical skills, and experience as a web developer. It serves as a central hub for my professional presence, featuring selected projects, technical case studies, and a blog where I share development insights and learnings.
 
-This is my personal portfolio website where I showcase my **projects, skills, and experience** as a web developer.  
+## Features
 
-## 🚀 Features
-- Responsive design (works on all devices 📱💻)  
-- Smooth animations and transitions ✨  
-- Projects section with live demos and GitHub links 🔗  
-- About me & contact form 📩  
+* Responsive design optimized for desktop, tablet, and mobile devices
+* Fast performance with SEO-friendly architecture
+* Project showcase with detailed case studies and live demos
+* Integrated blog for technical articles, project breakdowns, and development insights
+* Smooth and purposeful animations with interactive user experience
+* Contact section for collaboration and professional inquiries
 
-## 🛠️ Tech Stack
-- **Frontend:** HTML, CSS, JavaScript, React, Tailwind  
-- **Animations:** GSAP / Framer Motion  
-<!--- **Deployment:** Vercel / Netlify / GitHub Pages  -->
- ## 📷 Preview
+## Tech Stack
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+
+### Backend
+
+* MongoDB
+* Nodemailer
+
+### Animations & Interactions
+
+* GSAP
+* Framer Motion
+
+### Development Tools
+
+* Git
+* GitHub
+
+### Deployment
+
+* Vercel
+
+## Blog
+
+I regularly write about web development, project architecture, UI/UX decisions, and lessons learned while building real-world applications.
+
+Blog: https://vishal-dewani.vercel.app/blog
+
+## Preview
+
 ![Portfolio Preview](./preview.png)
 
-## 🌍 Live Demo
-👉 [View Website](https://vishal-dewani.vercel.app/)  
+## Live Website
 
+https://vishal-dewani.vercel.app/
+
+## Purpose
+
+This portfolio represents my approach to building modern web applications with a focus on performance, usability, and clean design. It is continuously updated with new projects, experiments, and technical writing.
