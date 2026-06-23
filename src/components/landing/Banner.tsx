@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 
 export const Banner = () => {
   return (
-    <div className="fixed bottom-3 left-1/2 -translate-x-1/2 bg-white/20 backdrop-blur-md flex p-4 rounded-sm min-w-110 justify-between">
+    <div className="fixed bottom-3 left-1/2 -translate-x-1/2 bg-white/20 backdrop-blur-md flex p-4 rounded-sm md:min-w-110 min-w-90 justify-between">
       <div className="flex">
         <div className="overflow-hidden rounded-sm">
           <Image

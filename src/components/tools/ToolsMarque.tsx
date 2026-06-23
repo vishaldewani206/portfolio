@@ -55,7 +55,7 @@ export default function ToolsMarquee({TOOLS_ONE, TOOLS_TWO}: ToolsMarqueeProps) 
       </div>
 
       {/* Row 2 — moves right */}
-      <div className="flex overflow-hidden mt-12">
+      <div className="flex overflow-hidden md:mt-12 mt-8">
         <div ref={row2Ref} className="flex gap-8 will-change-transform">
           {TOOLS_TWO.map((icon, i) => (
             <ToolCard key={i} icon={icon} />
@@ -68,7 +68,7 @@ export default function ToolsMarquee({TOOLS_ONE, TOOLS_TWO}: ToolsMarqueeProps) 
 
 function ToolCard({ icon }: { icon: { image: string; name: string } }) {
   return (
-    <div className="shrink-0 overflow-hidden bg-gray-200 rounded-xl p-4 flex flex-col justify-center items-center w-40 h-40 gap-3">
+    <div className="shrink-0 overflow-hidden bg-gray-200 rounded-xl p-4 flex flex-col justify-center items-center md:w-40 md:h-40 h-30 w-30 gap-3">
       <Image
         className="object-contain object-center w-10 h-10"
         src={icon.image}

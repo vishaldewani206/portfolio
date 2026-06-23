@@ -5,14 +5,14 @@ import Image from "next/image";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center fixed w-1/2  left-1/2 -translate-x-1/2 top-0 px-8 py-6 backdrop-blur-md mt-2 bg-black/20 text-white shadow-sm z-20 rounded-full ">
+    <nav className="flex justify-between items-center fixed w-[90%] md:w-1/2  left-1/2 -translate-x-1/2 top-0 px-8 py-4 backdrop-blur-md mt-2 bg-black/20 text-white shadow-sm z-20 rounded-full border border-white/20">
       <div>
         <Image src="/images/logo.png" width={40} height={40} alt="logo"
           className="border rounded-full p-2 w-12 h-12 bg-white"
-         />
+        />
       </div>
 
-      <ul className="flex gap-4">
+      <ul className="md:flex hidden gap-4 text-lg ">
         <li>
           <Link href="#home">Home</Link>
         </li>
@@ -33,7 +33,7 @@ export const Navbar = () => {
       </ul>
 
       <div>
-        <Button  className="rounded-full  py-5 px-5 group" size="lg">
+        <Button variant={"secondary"} className="rounded-full  py-7 px-5 group" size="lg">
           Download Resume{" "}
           <SquareArrowOutUpRight className="group-hover:scale-110" />
         </Button>

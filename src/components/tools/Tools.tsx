@@ -63,10 +63,24 @@ export const Tools = () => {
 
   return (
     <div className="w-full bg-white min-h-[40vh] relative rounded-t-2xl p-8">
-        <div className="w-[70%] mx-auto">
-        <h2 className="text-2xl mb-4">Tools</h2>
+        <div className="md:w-[70%] mx-auto">
+          <div className=' text-xl space-y-4 md:hidden block text-gray-700'>
+            <p>
+              Backend-focused software engineer building full-stack products with
+              TypeScript, Next.js, and Node.js. Experienced in delivering client
+              projects with 12+ completed on Fiverr.
+            </p>
+            <p>
+              Currently deepening expertise in backend systems, PostgreSQL, and AI
+              integration while pursuing a Software Engineering degree at Mehran
+              University.
+            </p>
+          </div>
 
-        <ToolsMarquee TOOLS_ONE={TOOLS_ONE} TOOLS_TWO={TOOLS_TWO} />
+
+          <h2 className="text-3xl mb-4 mt-8 md:mt-0 font-heading">Tools</h2>
+
+          <ToolsMarquee TOOLS_ONE={TOOLS_ONE} TOOLS_TWO={TOOLS_TWO} />
         </div>
       </div>
   )
