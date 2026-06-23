@@ -1,6 +1,5 @@
 import { SquareArrowOutUpRight } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
 import { Button } from '../ui/button'
 import { ProjectTypes } from '@/lib/types'
 import { Badge } from '../ui/badge'
@@ -34,7 +33,7 @@ export const Project = ({name, subheading,description, tech, link}: ProjectTypes
       <div className='grow w-full min-h-120 overflow-hidden rounded-xl group cursor-pointer custom-scrollbar'>
         {/* <Image className='object-cover w-full group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500' src={"/images/nextgendevs.png"} alt='project' width={400} height={400} /> */}
 
-        <iframe
+        {/* <iframe
             src={link}
             className="w-full h-full rounded-xl border shadow-lg"
             title="NextGen Devs"
@@ -42,7 +41,7 @@ export const Project = ({name, subheading,description, tech, link}: ProjectTypes
             allowFullScreen
             referrerPolicy="strict-origin-when-cross-origin"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-          />
+          /> */}
       </div>
     </div>
   )

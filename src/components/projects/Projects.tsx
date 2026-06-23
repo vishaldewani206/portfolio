@@ -8,14 +8,16 @@ export const Projects = () => {
       name: "MindSpark Coaching Acadmey",
       subheading: "Fullstack Project",
       description: "MindSpark Coaching Academy is an online learning platform built with Next.js that connects students, teachers, and administrators in one system. It includes role-based access where students can attend classes and access study material, teachers can manage content and track progress, and admins can oversee the entire platform. The project focuses on creating a smooth digital learning experience and an easy-to-use interface for online education.",
-      link: "https://mindspark-academy.vercel.app/",
+      // link: "https://mindspark-academy.vercel.app/",
+      link: "",
       tech: ["NextJS", "BetterAuth", "Zustand", "MongoDB", "Tailwind", "Shadcn", "NodeMailer"]
     },
     {
       name: "UMAT | Online Mock Test Platform",
       subheading: "Fullstack Project",
       description: "UMAT is a full-stack MERN project designed as a mock exam platform for students preparing for university entrance tests. It allows students to practice real exam-style tests, track their performance, and analyze weak areas. The platform is built to simulate actual exam environments and help thousands of students improve their preparation in a structured way.",
-      link: "https://www.umat.online",
+      // link: "https://www.umat.online",
+      link: "",
       tech: [
         "React", "Redux", "React Query", "Tailwind", "MongoDB", "Express", "NodeJS", "NodeMailer"
       ]

@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react"
 
 export const Header = () => {
 
-  const SKILLS = ["TypeScript & Next.js", "Node.JS", "MongoDB & PostgreSQL", "AI Integration"]
+  const SKILLS = ["TypeScript & Next.js", "Node.JS", "PostgreSQL & MongoDB", "AI Integration"]
 
   return (
     <div className='bg-primary text-white md:p-8 px-4 pb-12 relative z-10 rounded-b-2xl pt-28! md:pt-17!'>
@@ -11,7 +11,7 @@ export const Header = () => {
       </h1>
       <div className='flex flex-wrap justify-between  text-gray-300'>
         <div className='grow max-w-120 mb-6 lg:mb-0'>
-          <h2 className='text-2xl font-medium text-secondary font-heading'>Software Engineer</h2>
+          <h2 className='text-3xl font-bold text-secondary font-heading'>Software Engineer</h2>
         </div>
 
         <div className="flex justify-between gap-6 flex-wrap grow">

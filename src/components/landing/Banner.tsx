@@ -23,7 +23,9 @@ export const Banner = () => {
           </p>
         </div>
       </div>
-      <Button className="h-20 px-4 group"><ArrowRight className="group-hover:-rotate-z-45 transition-transform"/></Button>
+      <a href={"https://linkedin.com/in/vishal-dewani"} target="_blank" rel="noopener noreferrer">
+        <Button className="h-20 px-4 group"><ArrowRight className="group-hover:-rotate-z-45 transition-transform"/></Button>
+      </a>
     </div>
   )
 }
