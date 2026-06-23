@@ -1,11 +1,16 @@
 import { SquareArrowOutUpRight } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center fixed w-full left-0 top-0 px-4 py-4 backdrop-blur-lg bg-primary/40 text-white shadow-sm z-20">
-      <div>Vishal Dewani</div>
+    <nav className="flex justify-between items-center fixed w-1/2  left-1/2 -translate-x-1/2 top-0 px-8 py-6 backdrop-blur-md mt-2 bg-black/20 text-white shadow-sm z-20 rounded-full ">
+      <div>
+        <Image src="/images/logo.png" width={40} height={40} alt="logo"
+          className="border rounded-full p-2 w-12 h-12 bg-white"
+         />
+      </div>
 
       <ul className="flex gap-4">
         <li>
@@ -28,7 +33,7 @@ export const Navbar = () => {
       </ul>
 
       <div>
-        <Button variant={"outline"} className="rounded-full text-black py-5 px-5 group" size="lg">
+        <Button  className="rounded-full  py-5 px-5 group" size="lg">
           Download Resume{" "}
           <SquareArrowOutUpRight className="group-hover:scale-110" />
         </Button>

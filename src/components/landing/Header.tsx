@@ -5,7 +5,7 @@ export const Header = () => {
   const SKILLS = ["TypeScript & Next.js", "Node.JS", "MongoDB & PostgreSQL", "AI Integration"]
 
   return (
-    <div className='bg-primary text-white p-8  mt-4 relative z-10 rounded-b-2xl'>
+    <div className='bg-primary text-white p-8 relative z-10 rounded-b-2xl'>
       <h1 className='text-[clamp(3rem,14vw,17rem)] whitespace-nowrap font-heading text-center font-medium'>
         Vishal Dewani
       </h1>
