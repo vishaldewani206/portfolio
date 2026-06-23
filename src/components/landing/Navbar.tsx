@@ -14,19 +14,16 @@ export const Navbar = () => {
 
       <ul className="md:flex hidden gap-4 text-lg ">
         <li>
-          <Link href="#home">Home</Link>
+          <Link className="hover:text-secondary" href="#home">Home</Link>
         </li>
         <li>
-          <Link href="#projects">Projects</Link>
+          <Link className="hover:text-secondary" href="#projects">Projects</Link>
         </li>
         <li>
-          <Link href="#about">About Me</Link>
+          <Link className="hover:text-secondary" href="#certificates">Certificates</Link>
         </li>
         <li>
-          <Link href="#certificates">Certificates</Link>
-        </li>
-        <li>
-          <Link className="border-b-2 border-primary" href="#blog">
+          <Link  className="border-b-2 border-secondary hover:text-secondary" href="#blog">
             Blog
           </Link>
         </li>

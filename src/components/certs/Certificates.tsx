@@ -38,7 +38,7 @@ export const Certificates = () => {
     }
     ]
   return (
-    <div className='relative bg-white py-20'>
+    <div id='certificates' className='relative bg-white py-20'>
       <div className='md:w-[70%] mx-auto'>
         <h2 className='text-4xl font-heading'>Certificates And Other Achievements</h2>
 

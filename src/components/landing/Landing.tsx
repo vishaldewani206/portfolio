@@ -7,7 +7,7 @@ export const Landing = () => {
   
 
   return (
-    <section>
+    <section id="home">
       <Navbar />
 
       <Header />
