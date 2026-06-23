@@ -8,9 +8,9 @@ import { Badge } from '../ui/badge'
 
 export const Project = ({name, subheading,description, tech, link}: ProjectTypes) => {
   return (
-    <div className='flex gap-4'>
+    <div className='flex flex-col md:flex-row gap-4'>
 
-      <div className='grow  border py-8 px-6 rounded-xl w-full relative overflow-hidden group flex flex-col'>
+      <div className='grow border md:py-8 md:px-6 px-3 py-6 rounded-xl w-full relative overflow-hidden group flex flex-col order-2 md:order-1'>
         <div className='space-y-3'>
           <p className='flex text-gray-700 mb-5'>{subheading}</p>
           <h2 className='text-heading font-bold text-3xl font-heading'>{name}</h2>
@@ -30,18 +30,18 @@ export const Project = ({name, subheading,description, tech, link}: ProjectTypes
 
       </div>
 
-      <div className='grow w-full min-h-120 overflow-hidden rounded-xl group cursor-pointer custom-scrollbar'>
+      <div className='grow w-full min-h-120 overflow-hidden rounded-xl group cursor-pointer order-1 md:order-2'>
         {/* <Image className='object-cover w-full group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500' src={"/images/nextgendevs.png"} alt='project' width={400} height={400} /> */}
 
-        {/* <iframe
+        <iframe
             src={link}
-            className="w-full h-full rounded-xl border shadow-lg"
+            className="w-full h-full min-h-120 rounded-xl border shadow-lg"
             title="NextGen Devs"
             loading="lazy"
             allowFullScreen
             referrerPolicy="strict-origin-when-cross-origin"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-          /> */}
+          />
       </div>
     </div>
   )

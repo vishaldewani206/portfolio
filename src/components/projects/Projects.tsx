@@ -8,8 +8,8 @@ export const Projects = () => {
       name: "MindSpark Coaching Acadmey",
       subheading: "Fullstack Project",
       description: "MindSpark Coaching Academy is an online learning platform built with Next.js that connects students, teachers, and administrators in one system. It includes role-based access where students can attend classes and access study material, teachers can manage content and track progress, and admins can oversee the entire platform. The project focuses on creating a smooth digital learning experience and an easy-to-use interface for online education.",
-      // link: "https://mindspark-academy.vercel.app/",
-      link: "",
+      link: "https://mindspark-academy.vercel.app/",
+      // link: "",
       tech: ["NextJS", "BetterAuth", "Zustand", "MongoDB", "Tailwind", "Shadcn", "NodeMailer"]
     },
     {
@@ -32,7 +32,7 @@ export const Projects = () => {
   ]
   return (
     <section id='projects' className='bg-white relative pt-22'>
-      <div className='w-[70%] mx-auto py-10 space-y-12'>
+      <div className='md:w-[70%] w-[90%] mx-auto py-10 space-y-12'>
         {PROJECTS.map((project)=>(
           <Project 
           key={project.name} 

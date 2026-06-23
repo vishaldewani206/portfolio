@@ -23,9 +23,9 @@ export const Contact = () => {
   ]
   return (
     <section className="relative bg-white py-20">
-      <div className="w-[70%] h-100  mx-auto  flex items-center gap-4">
+      <div className="md:w-[70%] w-[90%] min-h-100  mx-auto  flex flex-col md:flex-row items-center gap-4">
         <div className="flex flex-col justify-center bg-primary p-8 rounded-2xl w-full flex-1">
-          <h2 className="text-4xl text-white font-heading">Let&apos;s Connect</h2>
+          <h2 className="text-3xl text-white font-heading">Let&apos;s Connect</h2>
           <div className="flex mt-12 gap-8">
             {SOCIALS.map((e)=>(
               <Image src={e.image} key={e.link} alt={e.name} width={50} height={50} />
@@ -38,7 +38,7 @@ export const Contact = () => {
         </div>
 
         <div className="bg-secondary p-8 rounded-2xl w-full flex-2 ">
-          <h2 className="text-2xl font-heading mb-4 font-medium">Checkout My Blogs</h2>
+          <h2 className="text-3xl font-heading mb-4 font-medium">Checkout My Blogs</h2>
           <p className="text-zinc-800">
             I also write blog posts focused on case studies of the projects I build. In these blogs, I explain how each project was developed, including the tech stack, challenges I faced, and the solutions I implemented. It’s a way to document my development process and help others understand how real-world web applications are built.
           </p>

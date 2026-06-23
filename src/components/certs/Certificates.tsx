@@ -39,8 +39,8 @@ export const Certificates = () => {
     ]
   return (
     <div id='certificates' className='relative bg-white py-20'>
-      <div className='md:w-[70%] mx-auto'>
-        <h2 className='text-4xl font-heading'>Certificates And Other Achievements</h2>
+      <div className='md:w-[70%] w-[90%] mx-auto'>
+        <h2 className='md:text-4xl text-3xl font-heading'>Certificates And Other Achievements</h2>
 
       <div className='flex gap-8 flex-wrap justify-between mt-8'>
         {CERTS.map((e)=>(
