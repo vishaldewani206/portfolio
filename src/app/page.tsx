@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Landing } from "@/components/landing/Landing";
 
 export default function Home() {
   return (
-    <main>
-      <Button>hello</Button>
+    <main className="overflow-x-hidden">
+      <Landing />
     </main>
   );
 }
