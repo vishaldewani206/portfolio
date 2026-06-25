@@ -1,7 +1,10 @@
+"use client"
 import Image from "next/image"
 import { Button } from "./ui/button"
 import { SquareArrowOutUpRight } from "lucide-react"
 import Link from "next/link"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 
 export const Contact = () => {
   const SOCIALS = [
@@ -21,9 +24,23 @@ export const Contact = () => {
       image: "/icons/x.png"
     }
   ]
+
+  useGSAP(()=>{
+    gsap.from(".contact", {
+      y:100,
+      opacity:0,
+      ease: "power2.out",
+      scrollTrigger:{
+        trigger: ".contact",
+        start: "top+=20% bottom-=30%",
+        end: "top center",
+      }
+    })
+  },[])
+
   return (
     <section className="relative bg-white py-20">
-      <div className="md:w-[70%] w-[90%] min-h-100  mx-auto  flex flex-col md:flex-row items-center gap-4">
+      <div className="contact md:w-[70%] w-[90%] min-h-100  mx-auto  flex flex-col md:flex-row items-center gap-4">
         <div className="flex flex-col justify-center bg-primary p-8 rounded-2xl w-full flex-1">
           <h2 className="text-3xl text-white font-heading">Let&apos;s Connect</h2>
           <div className="flex mt-12 gap-8">

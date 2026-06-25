@@ -1,6 +1,7 @@
-import React from 'react'
+"use client"
 import { Project } from './Project'
 import { ProjectTypes } from '@/lib/types'
+
 
 export const Projects = () => {
   const PROJECTS: ProjectTypes[] = [
@@ -30,6 +31,9 @@ export const Projects = () => {
       tech: ["React", "GSAP", "ThreeJS", "Tailwind"]
     }
   ]
+
+  
+
   return (
     <section id='projects' className='bg-white relative pt-22'>
       <div className='md:w-[70%] w-[90%] mx-auto py-10 space-y-12'>

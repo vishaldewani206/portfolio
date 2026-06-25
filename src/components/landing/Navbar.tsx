@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const Navbar = () => {
   return (
-    <nav className="nav flex justify-between items-center fixed w-[90%] md:w-1/2  left-1/2 -translate-x-1/2 top-0 px-8 py-4 backdrop-blur-md mt-2 bg-black/20 text-white shadow-sm z-20 rounded-full border border-white/20">
+    <nav className="nav flex justify-between items-center fixed w-[90%] md:w-180  left-1/2 -translate-x-1/2 top-0 px-8 py-4 backdrop-blur-md mt-2 bg-black/20 text-white shadow-sm z-20 rounded-full border border-white/20">
       <div>
         <Image src="/images/logo.png" width={40} height={40} alt="logo"
           className="border rounded-full p-2 w-12 h-12 bg-white"
@@ -23,7 +23,7 @@ export const Navbar = () => {
           <Link className="hover:text-secondary" href="#certificates">Certificates</Link>
         </li>
         <li>
-          <Link  className="border-b-2 border-secondary hover:text-secondary" href="#blog">
+          <Link  className="border-b-2 border-secondary hover:text-secondary" href="/blog">
             Blog
           </Link>
         </li>

@@ -1,3 +1,6 @@
+"use client"
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import { SquareArrowOutUpRight } from 'lucide-react'
 import Image from 'next/image'
 
@@ -37,6 +40,24 @@ export const Certificates = () => {
       link: "https://coursera.org/share/a0f2e71ce684e1ad6a75ca6cae4b0437", 
     }
     ]
+
+
+  
+
+  useGSAP(() => {
+    gsap.utils.toArray<HTMLElement>(".cert").forEach((cert) => {
+      gsap.from(cert, {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: cert,
+          start: "top 85%",
+        },
+      });
+    });
+}, []);
+
   return (
     <div id='certificates' className='relative bg-white py-20'>
       <div className='md:w-[70%] w-[90%] mx-auto'>
@@ -44,10 +65,10 @@ export const Certificates = () => {
 
       <div className='flex gap-8 flex-wrap justify-between mt-8'>
         {CERTS.map((e)=>(
-          <a href={e.link} target='_blank' rel='noopener noreferrer' key={e.link} className='relative group cursor-pointer'>
+          <a href={e.link} target='_blank' rel='noopener noreferrer' key={e.link} className='cert relative group cursor-pointer'>
             <SquareArrowOutUpRight className='absolute md:top-1/2 md:left-1/2 right-2 top-2 md:-translate-x-1/2 md:-translate-y-1/2 group-hover:opacity-100 md:opacity-0 opacity-100 transition-opacity duration-500 delay-100' />
             <Image src={e.image} className='' loading='lazy' alt='certificate' width={600} height={600} />
-             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-500" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-500" />
           </a>
         ))}
       </div>

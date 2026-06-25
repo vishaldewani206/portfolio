@@ -31,7 +31,7 @@ export const Header = () => {
               </ul>
             </div>
 
-            <div className='grow max-w-120 text-xl space-y-4 hidden md:block'>
+            <div className='grow max-w-130 text-xl space-y-4 hidden md:block'>
               <p>
                 Backend-focused software engineer building full-stack products with
                 TypeScript, Next.js, and Node.js. Experienced in delivering client
