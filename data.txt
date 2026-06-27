@@ -1,0 +1,6 @@
+<p>If you're using the Markdown extension or input rules, you can also type:</p><p></p><pre><code># Heading 1
+## Heading 2
+### Heading 3
+&gt; Blockquote
+- Bullet List
+1. Ordered List</code></pre><p>and press <strong>Space</strong> to transform the block automatically.</p><p></p>

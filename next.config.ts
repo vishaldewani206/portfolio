@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
+const nextConfig = {
+  images: {
+    domains: ['res.cloudinary.com'],
+    unoptimized: false,
+  },
+  // tell Next.js ESLint rule to allow <img> inside tiptap node views
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+export default nextConfig

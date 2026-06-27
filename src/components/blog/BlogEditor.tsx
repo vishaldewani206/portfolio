@@ -2,7 +2,8 @@
 
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import Image from '@tiptap/extension-image'
+// import Image from '@tiptap/extension-image'
+import { ImageExtension } from '@/lib/ImageExtension'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import Typography from '@tiptap/extension-typography'
@@ -24,7 +25,7 @@ export function BlogEditor({ initialContent, onChange }: Props) {
         codeBlock: false, // replaced by MermaidCodeBlock
       }),
       MermaidCodeBlock,
-      Image.configure({
+      ImageExtension.configure({
         HTMLAttributes: {
           class: 'rounded-md max-w-100 my-8 mx-auto block',
         },
