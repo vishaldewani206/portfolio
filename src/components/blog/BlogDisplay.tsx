@@ -7,12 +7,13 @@ import mermaid from 'mermaid'
 interface Props {
   html: string
   title?: string
+  cover?: string
   author?: string
   date?: string
   readingTime?: number
 }
 
-export function BlogDisplay({ html, title, author, date, readingTime }: Props) {
+export function BlogDisplay({ html, title, author, date, readingTime, cover }: Props) {
   const contentRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
   if (!contentRef.current) return
@@ -68,12 +69,21 @@ export function BlogDisplay({ html, title, author, date, readingTime }: Props) {
 }, [html])
 
   return (
-    <article className="max-w-[680px] mx-auto  py-16">
+    <article className="w-full mx-auto  py-16">
       {/* Header */}
       {title && (
         <h1 className="font-serif text-4xl font-bold tracking-tight text-zinc-900 mb-4 leading-tight">
           {title}
         </h1>
+      )}
+
+      {cover && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={cover}
+          alt={title ?? 'Cover'}
+          className="w-full h-72 object-cover rounded-xl mb-10"
+        />
       )}
 
       {(author || date || readingTime) && (
@@ -89,6 +99,8 @@ export function BlogDisplay({ html, title, author, date, readingTime }: Props) {
           )}
         </div>
       )}
+
+      
 
       {/* Content */}
       <div

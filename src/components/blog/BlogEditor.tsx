@@ -11,6 +11,7 @@ import CharacterCount from '@tiptap/extension-character-count'
 import { MermaidCodeBlock } from './MermaidCodeBlock'
 import { BubbleToolbar } from './BubbleToolbar'
 import { FloatingToolbar } from './FloatingToolbar'
+import { useRef } from 'react'
 
 interface Props {
   initialContent?: string
@@ -56,14 +57,17 @@ export function BlogEditor({ initialContent, onChange }: Props) {
     },
   })
 
+  const containerRef = useRef<HTMLDivElement>(null)
+
+
   if (!editor) return null
 
   const words = editor.storage.characterCount.words()
 
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       <BubbleToolbar editor={editor} />
-      <FloatingToolbar editor={editor} />
+      <FloatingToolbar editor={editor} containerRef={containerRef} />
 
       <EditorContent
         editor={editor}

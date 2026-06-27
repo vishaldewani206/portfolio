@@ -1,18 +1,20 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type { Editor } from '@tiptap/react'
 import { Plus, ImageIcon, Minus, Code2, List } from 'lucide-react'
 import { handleImageUpload } from '@/lib/handleImageUpload'
 
 interface Props {
   editor: Editor
+  containerRef: React.RefObject<HTMLDivElement | null>
 }
 
-export function FloatingToolbar({ editor }: Props) {
+export function FloatingToolbar({ editor, containerRef }: Props) {
   const [top, setTop] = useState<number | null>(null)
   const [open, setOpen] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
+
 
   useEffect(() => {
     const update = () => {
@@ -21,7 +23,15 @@ export function FloatingToolbar({ editor }: Props) {
       if ($from.parent.textContent !== '') { setTop(null); return }
 
       const coords = editor.view.coordsAtPos(from)
-      setTop(coords.top + window.scrollY - 6)
+      const container = containerRef.current
+
+      if (!container) return
+
+      const containerRect = container.getBoundingClientRect()
+
+      // coords.top is relative to viewport, containerRect.top is also viewport-relative
+      // subtract to get position relative to the container
+      setTop(coords.top - containerRect.top + container.scrollTop)
       setOpen(false)
     }
 

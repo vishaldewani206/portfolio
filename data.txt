@@ -4,3 +4,55 @@
 &gt; Blockquote
 - Bullet List
 1. Ordered List</code></pre><p>and press <strong>Space</strong> to transform the block automatically.</p><p></p>
+
+
+
+
+This is a story of creating a complicated and full of features website in a nearly impossible time! I had to work 12 hours a day to delivery this website. Many people would have quit after finding out the deadline.
+
+MindSpark Coaching Academy Starting
+
+Right after the announcement of this incredible project, I started planning phase. I asked the client all the information regarding this project; things like:
+
+
+
+
+
+Logo
+
+
+
+Other Images
+
+
+
+Motive
+
+
+
+What mindspark do (descriptive)
+
+
+
+What vibe you want
+
+
+
+What are the additional features in your mind (if any)
+
+These are essential questions to be asked before starting a project. I tend to get all the information before starting. Many new developers ask information when they require information. This can lead to frustration for client. Sometimes we (developers) have to contact client again and again because of this method.
+
+Working tirelessly for 4 days I had the landing page, sign in, sign out page, and basic better-auth setup completed.
+
+Better Auth
+
+This is the library to use if you are looking to make your life easier with these kind of projects. If you want a reliable authentication system you should go with better-auth. It has all the features
+
+npx create next@latest .
+
+let x = (a,b)=> return a + b
+let y = (a,b) => return a - b
+console.log(x, y)
+
+
+

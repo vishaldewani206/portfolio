@@ -3,8 +3,6 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import { SquareArrowOutUpRight } from "lucide-react"
 import Link from "next/link"
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
 
 export const Contact = () => {
   const SOCIALS = [
@@ -25,18 +23,6 @@ export const Contact = () => {
     }
   ]
 
-  useGSAP(()=>{
-    gsap.from(".contact", {
-      y:100,
-      opacity:0,
-      ease: "power2.out",
-      scrollTrigger:{
-        trigger: ".contact",
-        start: "top+=20% bottom-=30%",
-        end: "top center",
-      }
-    })
-  },[])
 
   return (
     <section className="relative bg-white py-20">

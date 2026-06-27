@@ -4,6 +4,10 @@ import { Source_Serif_4, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import { LoadingProvider } from "@/lib/loading";
+import { Suspense } from "react";
+import { ProgressBar } from "@/components/ProgressBar";
+import { SessionGate } from "@/components/SessionGate";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -37,9 +41,16 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", sourceSerif.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <SmoothScrollProvider>
-          {children}
-        </SmoothScrollProvider>
+        <LoadingProvider>
+          <Suspense>
+            <ProgressBar />
+          </Suspense>
+          <SessionGate>
+            <SmoothScrollProvider>
+              {children}
+            </SmoothScrollProvider>
+          </SessionGate>
+        </LoadingProvider>
         </body>
     </html>
   );

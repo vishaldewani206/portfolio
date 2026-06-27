@@ -37,8 +37,8 @@ export function BubbleToolbar({ editor }: Props) {
       const toolbarWidth = toolbar?.offsetWidth ?? 280
 
       setPos({
-        top: rect.top + window.scrollY - 48,
-        left: rect.left + window.scrollX + rect.width / 2 - toolbarWidth / 2,
+        top: rect.top  - 48,
+        left: rect.left + rect.width / 2 - toolbarWidth / 2,
       })
     }
 
