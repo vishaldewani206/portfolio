@@ -34,10 +34,14 @@ export const Contact = () => {
               <Image src={e.image} key={e.link} alt={e.name} width={50} height={50} />
             ))}
           </div>
+          <a  href="/resume/Vishal_Dewani.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
           <Button variant={"outline"} className="rounded-full mt-10 hover:bg-primary hover:text-white py-7 px-5 group border-gray-400" size="lg">
-            Download Resume{" "}
+            View Resume{" "}
             <SquareArrowOutUpRight className="group-hover:scale-110" />
           </Button>
+          </a>
         </div>
 
         <div className="bg-secondary p-8 rounded-2xl w-full flex-2 ">

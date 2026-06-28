@@ -54,6 +54,6 @@ export const config = {
   matcher: [
     '/dashboard/:path*',
     '/login',
-    '/((?!_next/static|_next/image|favicon.ico|images|fonts|icons|api).*)'
+    '/((?!_next/static|_next/image|favicon.ico|images|fonts|icons|api|resume).*)'
   ],
 }

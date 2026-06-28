@@ -29,12 +29,14 @@ export const Navbar = () => {
         </li>
       </ul>
 
-      <div>
+      <a href="/resume/Vishal_Dewani.pdf"
+        target="_blank"
+        rel="noopener noreferrer">
         <Button variant={"secondary"} className="rounded-full  py-7 px-5 group" size="lg">
-          Download Resume{" "}
+          View Resume{" "}
           <SquareArrowOutUpRight className="group-hover:scale-110" />
         </Button>
-      </div>
+      </a>
     </nav>
   );
 };
