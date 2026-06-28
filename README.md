@@ -44,7 +44,7 @@ A modern portfolio website designed to showcase my work, technical skills, and e
 
 I regularly write about web development, project architecture, UI/UX decisions, and lessons learned while building real-world applications.
 
-Blog: https://vishal-dewani.vercel.app/blog
+Blog: https://vishaldewani.vercel.app/blog
 
 ## Preview
 
@@ -52,7 +52,7 @@ Blog: https://vishal-dewani.vercel.app/blog
 
 ## Live Website
 
-https://vishal-dewani.vercel.app/
+https://vishaldewani.vercel.app/
 
 ## Purpose
 
