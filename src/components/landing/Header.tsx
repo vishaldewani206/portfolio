@@ -18,6 +18,7 @@ export const Header = () => {
         <div className='flex flex-wrap justify-between  text-gray-300 bio'>
           <div className='grow max-w-120 mb-6 lg:mb-0'>
             <h2 className='text-3xl font-bold text-secondary font-heading'>Software Engineer</h2>
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="64ddef98-07bd-4389-9d33-36cbca153e7d" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
           </div>
 
           <div className="flex justify-between gap-6 flex-wrap grow">

@@ -52,9 +52,9 @@
 /* oklch(0.967 0.001 286.375) */
 :root {
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: #242424;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover-foreground: #242424;
   --primary: oklch(0.488 0.243 264.376);
   --primary-foreground: oklch(0.97 0.014 254.604);
   --secondary: #8ef606;
@@ -74,7 +74,7 @@
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-foreground: #242424;
   --sidebar-primary: oklch(0.546 0.245 262.881);
   --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
   --sidebar-accent: oklch(0.97 0 0);
@@ -82,11 +82,11 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: #242424;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #242424;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -189,7 +189,7 @@
 
 /* Editor paragraph spacing */
 .ProseMirror p {
-  margin-bottom: 1.5rem;
+  margin-block: 1.5rem;
 }
 .ProseMirror p:last-child {
   margin-bottom: 0;
@@ -197,7 +197,7 @@
 
 /* Display/preview paragraph spacing */
 .blog-content p {
-  margin-bottom: 1.75rem;
+  margin-block: 1.75rem;
   line-height: 1.85;
 }
 .blog-content p:last-child {
@@ -206,7 +206,7 @@
 
 .blog-content ul,
 .blog-content ol {
-  @apply pl-6 mb-6 text-xl;
+  @apply pl-8 mb-6 text-xl;
 }
 .blog-content ul { list-style-type: disc; }
 .blog-content ol { list-style-type: decimal; }

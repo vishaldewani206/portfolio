@@ -27,14 +27,14 @@ export const Contact = () => {
   return (
     <section className="relative bg-white py-20">
       <div className="contact md:w-[70%] w-[90%] min-h-100  mx-auto  flex flex-col md:flex-row items-center gap-4">
-        <div className="flex flex-col justify-center bg-primary p-8 rounded-2xl w-full flex-1">
-          <h2 className="text-3xl text-white font-heading">Let&apos;s Connect</h2>
+        <div className="flex flex-col justify-center border-2  p-8 rounded-2xl w-full flex-1">
+          <h2 className="text-3xl  font-heading">Let&apos;s Connect</h2>
           <div className="flex mt-12 gap-8">
             {SOCIALS.map((e)=>(
               <Image src={e.image} key={e.link} alt={e.name} width={50} height={50} />
             ))}
           </div>
-          <Button variant={"outline"} className="rounded-full mt-10 py-7 px-5 group" size="lg">
+          <Button variant={"outline"} className="rounded-full mt-10 hover:bg-primary hover:text-white py-7 px-5 group border-gray-400" size="lg">
             Download Resume{" "}
             <SquareArrowOutUpRight className="group-hover:scale-110" />
           </Button>

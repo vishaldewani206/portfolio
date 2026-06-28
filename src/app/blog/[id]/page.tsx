@@ -1,58 +1,36 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useBlogStore } from '@/store/useBlogs'
 import { getBlogById, viewBlog } from '@/lib/use-fetch-blogs'
 import { BlogDisplay } from '@/components/blog/BlogDisplay'
 import { useLoading } from '@/lib/loading'
-import { ArrowLeft } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { useViewStore } from '@/store/viewStore'
+import { Button } from '@/components/ui/button'
+import { ArrowLeft } from 'lucide-react'
 
 export default function BlogPostPage() {
-  const router = useRouter()
   const { id } = useParams<{ id: string }>()
+  const router = useRouter()
   const { show, hide } = useLoading()
   const [notFound, setNotFound] = useState(false)
-  const [readingTime, setReadingTime] = useState(0)
 
-  // select directly from store — stable selector, no function call in render
-  const blog = useBlogStore((state) => state.blogsMap[id] ?? null)
+  const blog = useBlogStore((state) => (id ? state.blogsMap[id] ?? null : null))
   const upsertBlog = useBlogStore((state) => state.upsertBlog)
 
+  const { hasViewed, markViewed } = useViewStore()
+  const didView = useRef(false)
 
-  const {hasViewed, markViewed} = useViewStore()
-
-  useEffect(()=>{
-    if(!hasViewed(blog._id)){
-      viewBlog(blog._id).then(()=>{
-        markViewed(blog._id)
-      })
-    }
-
-  },[blog._id])
-  
-
-  useEffect(()=>{
-    if (blog){
-      calculateReadingTime(setReadingTime, blog.content)
-    }
-  },[blog])
-
+  // fetch if not in store
   useEffect(() => {
-    
-    if (!id) return
-    if (blog) return // already in store, skip fetch
+    if (!id || blog) return
 
     const fetch = async () => {
       show()
       try {
         const data = await getBlogById(id)
-        if (!data) {
-          setNotFound(true)
-          return
-        }
+        if (!data) { setNotFound(true); return }
         upsertBlog(data)
       } catch {
         setNotFound(true)
@@ -62,43 +40,39 @@ export default function BlogPostPage() {
     }
 
     fetch()
-  }, [id]) // only re-run if id changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id])
+
+  // view tracking — only runs when blog is available
+  useEffect(() => {
+    if (!blog?._id) return        // guard — blog must exist
+    if (didView.current) return   // StrictMode guard
+    if (hasViewed(blog._id)) return
+
+    didView.current = true
+    viewBlog(blog._id).then(() => {
+      markViewed(blog._id)
+    })
+  }, [blog?._id]) // depends on blog._id, not blog object
 
   if (notFound) {
-    return (
-      <p className="text-center py-20 text-zinc-400">Blog not found.</p>
-    )
+    return <p className="text-center py-20 text-zinc-400">Blog not found.</p>
   }
 
-  if (!blog) return null
+  if (!blog) return null  // loading state — SessionGate/loader handles the spinner
 
   return (
     <>
-    <Button onClick={()=> router.back()} variant={"outline"} className='mt-4 -mb-5'>
-      <ArrowLeft />
-      Go Back
-    </Button>
-    <BlogDisplay
-      html={blog.content}
-      title={blog.title}
-      cover={blog.cover}
-      date={blog.createdAt}
-      readingTime={readingTime}
-    />
+      <Button onClick={()=> router.push("/dashboard")} variant={"outline"} className='mt-4'>
+        <ArrowLeft />
+        Go Back
+      </Button>
+      <BlogDisplay
+        html={blog.content}
+        title={blog.title}
+        cover={blog.cover}
+        date={blog.createdAt}
+      />
     </>
   )
-}
-
-
-function calculateReadingTime(setReadingTime: Dispatch<SetStateAction<number>>,html: string) {
-  // Remove HTML tags
-  const text = html.replace(/<[^>]*>/g, "");
-
-  // Count words
-  const words = text.trim().split(/\s+/).length;
-
-  // Average reading speed
-  const wpm = 200;
-
-  setReadingTime(Math.max(1, Math.ceil(words / wpm)))
 }

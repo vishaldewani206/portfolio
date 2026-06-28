@@ -17,8 +17,8 @@ export const Projects = () => {
       name: "UMAT | Online Mock Test Platform",
       subheading: "Fullstack Project",
       description: "UMAT is a full-stack MERN project designed as a mock exam platform for students preparing for university entrance tests. It allows students to practice real exam-style tests, track their performance, and analyze weak areas. The platform is built to simulate actual exam environments and help thousands of students improve their preparation in a structured way.",
-      // link: "https://www.umat.online",
-      link: "",
+      link: "https://www.umat.online",
+      // link: "",
       tech: [
         "React", "Redux", "React Query", "Tailwind", "MongoDB", "Express", "NodeJS", "NodeMailer"
       ]

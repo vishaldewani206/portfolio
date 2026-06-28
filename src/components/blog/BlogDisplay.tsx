@@ -86,7 +86,7 @@ export function BlogDisplay({ html, title, author="Vishal Dewani", date, reading
     <article className="w-full mx-auto  py-10">
       {/* Header */}
       {title && (
-        <h1 className="font-serif text-4xl font-bold tracking-tight text-zinc-900 mb-4 leading-tight">
+        <h1 className="font-serif text-4xl font-bold tracking-tight mb-4 leading-tight">
           {title}
         </h1>
       )}
