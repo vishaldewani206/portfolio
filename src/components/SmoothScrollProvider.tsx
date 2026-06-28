@@ -9,13 +9,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 gsap.ticker.lagSmoothing(0)
 
-// routes where smooth scroll should be disabled
-const DISABLED_ROUTES = ['/blog']
 
 export default function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
-  const isDisabled = DISABLED_ROUTES.some((route) => pathname.startsWith(route))
+const isDisabled =
+  pathname === "/blog" || pathname.startsWith("/blog/") || pathname === "/dashboard" || pathname.startsWith("/dashboard/");
 
   useEffect(() => {
     if (isDisabled) return

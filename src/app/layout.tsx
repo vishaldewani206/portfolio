@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Source_Serif_4, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import { LoadingProvider } from "@/lib/loading";
 import { Suspense } from "react";
 import { ProgressBar } from "@/components/ProgressBar";
@@ -40,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", sourceSerif.variable, "font-sans", inter.variable)}
+      className={cn("h-full min-h-screen", "antialiased", sourceSerif.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
         <LoadingProvider>
@@ -48,10 +47,8 @@ export default function RootLayout({
             <ProgressBar />
           </Suspense>
           <SessionGate>
-            <SmoothScrollProvider>
               <Toaster />
               {children}
-            </SmoothScrollProvider>
           </SessionGate>
         </LoadingProvider>
         </body>
