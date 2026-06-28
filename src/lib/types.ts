@@ -10,3 +10,14 @@ export type ProjectTypes = {
   description: string;
   tech: string[];
 }
+
+
+export type Blog = {
+  _id: string
+  title: string
+  description: string
+  cover: string
+  views: number
+  content: string
+  createdAt: string
+}

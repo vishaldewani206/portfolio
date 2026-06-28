@@ -8,6 +8,8 @@ import { LoadingProvider } from "@/lib/loading";
 import { Suspense } from "react";
 import { ProgressBar } from "@/components/ProgressBar";
 import { SessionGate } from "@/components/SessionGate";
+import { Toaster } from "sonner";
+
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -47,6 +49,7 @@ export default function RootLayout({
           </Suspense>
           <SessionGate>
             <SmoothScrollProvider>
+              <Toaster />
               {children}
             </SmoothScrollProvider>
           </SessionGate>

@@ -27,7 +27,7 @@ const AdminNav = ({image, handleLogout}: {image: string | null, handleLogout: ()
             <Link href={"/"}>Home</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href={"/dashboard"}>Home</Link>
+            <Link href={"/dashboard"}>Dashboard</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

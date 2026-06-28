@@ -7,6 +7,8 @@ import { CoverUpload } from '@/components/blog/CoverUpload'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
+import { createBlog } from '@/lib/use-fetch-blogs'
+import { toast } from 'sonner'
 
 export default function WritePage() {
   const [html, setHtml] = useState<string>('')
@@ -14,6 +16,14 @@ export default function WritePage() {
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [cover, setCover] = useState<string>('')
+
+  const handleBlog = async ()=>{
+    if(title == '' || html == '' || title == '' || description == '' || cover == ''){
+      toast.error("All fields are required", {position: "top-right", richColors: true})
+      return
+    }
+    createBlog(title, description, html, cover)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -44,7 +54,7 @@ export default function WritePage() {
             >
               {preview ? 'Edit' : 'Preview'}
             </Button>
-            <Button className="px-5 rounded-full hover:scale-105 transition-transform">
+            <Button onClick={handleBlog} className="px-5 rounded-full hover:scale-105 transition-transform">
               Publish
             </Button>
           </div>

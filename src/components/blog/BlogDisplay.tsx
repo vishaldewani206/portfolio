@@ -13,63 +13,77 @@ interface Props {
   readingTime?: number
 }
 
-export function BlogDisplay({ html, title, author, date, readingTime, cover }: Props) {
+
+
+export function BlogDisplay({ html, title, author="Vishal Dewani", date, readingTime, cover }: Props) {
   const contentRef = useRef<HTMLDivElement>(null)
+  
   useEffect(() => {
-  if (!contentRef.current) return
+    if (!html) return
 
-  // syntax highlighting
-  const codeBlocks = contentRef.current.querySelectorAll('pre code')
-  codeBlocks.forEach((block) => {
-    if (block.classList.contains('language-mermaid')) return
-    hljs.highlightElement(block as HTMLElement)
-  })
+    // small delay to let dangerouslySetInnerHTML finish painting
+    const timer = setTimeout(async () => {
+      if (!contentRef.current) return
 
-  // mermaid — extract into async IIFE
-  const renderMermaid = async () => {
-    if (!contentRef.current) return
-    mermaid.initialize({ startOnLoad: false, theme: 'neutral' })
+      mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' })
 
-    const mermaidBlocks = contentRef.current.querySelectorAll('code.language-mermaid')
+      // broad selector — covers all class variations Tiptap might save
+      const allBlocks = contentRef.current.querySelectorAll('pre code')
+      const mermaidBlocks = Array.from(allBlocks).filter((block) => {
+        const cls = block.getAttribute('class') ?? ''
+        return cls.includes('mermaid')
+      })
 
-    for (const block of Array.from(mermaidBlocks)) {
-      const code = block.textContent || ''
-      const pre = block.closest('pre')
-      if (!pre || !code.trim()) continue
+      console.log('found mermaid blocks:', mermaidBlocks.length) // debug — remove later
 
-      const id = `mermaid-view-${Date.now()}-${Math.random().toString(36).slice(2)}`
+      for (const block of mermaidBlocks) {
+        const pre = block.closest('pre')
+        if (!pre) continue
 
-      try {
-        const { svg } = await mermaid.render(id, code)
-        const wrapper = document.createElement('div')
-        wrapper.className = 'flex justify-center my-6 p-4 border border-zinc-200 rounded-lg bg-white overflow-auto'
-        wrapper.innerHTML = svg
-        pre.replaceWith(wrapper)
-      } catch (e: any) {
-        document.getElementById(id)?.remove()
-        document.querySelector(`[id^="dmermaid"]`)?.remove()
+        const code = block.textContent?.trim() || ''
+        if (!code) continue
 
-        const errBox = document.createElement('div')
-        errBox.className = 'flex items-start gap-2 bg-red-950/40 border border-red-800/50 rounded-lg p-3 my-4'
-        errBox.innerHTML = `
-          <span class="text-red-400 text-xs font-mono mt-0.5">✕</span>
-          <div>
-            <p class="text-red-400 text-xs font-semibold mb-1">Mermaid syntax error</p>
-            <p class="text-red-300/70 text-xs font-mono leading-relaxed">${
-              (e?.message ?? 'Syntax error').split('\n')[0]
-            }</p>
-          </div>
-        `
-        pre.replaceWith(errBox)
+        const id = `mermaid-${Date.now()}-${Math.random().toString(36).slice(2)}`
+
+        try {
+          const { svg } = await mermaid.render(id, code)
+          const wrapper = document.createElement('div')
+          wrapper.className = 'flex justify-center my-6 p-4 border border-zinc-200 rounded-lg bg-white overflow-auto '
+          wrapper.innerHTML = svg
+          pre.replaceWith(wrapper)
+        } catch (e: any) {
+          document.getElementById(id)?.remove()
+          document.querySelector('[id^="dmermaid"]')?.remove()
+
+          const errBox = document.createElement('div')
+          errBox.className = 'flex items-start gap-2 bg-red-950/40 border border-red-800/50 rounded-lg p-3 my-4'
+          errBox.innerHTML = `
+            <span class="text-red-400 text-xs font-mono mt-0.5">✕</span>
+            <div>
+              <p class="text-red-400 text-xs font-semibold mb-1">Mermaid syntax error</p>
+              <p class="text-red-300/70 text-xs font-mono leading-relaxed">${
+                (e?.message ?? 'Syntax error').split('\n')[0]
+              }</p>
+            </div>
+          `
+          pre.replaceWith(errBox)
+        }
       }
-    }
-  }
 
-  renderMermaid()
-}, [html])
+      // hljs after mermaid blocks are replaced
+      const codeBlocks = contentRef.current.querySelectorAll('pre code')
+      codeBlocks.forEach((block) => {
+        const cls = block.getAttribute('class') ?? ''
+        if (cls.includes('mermaid')) return
+        hljs.highlightElement(block as HTMLElement)
+      })
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [html])
 
   return (
-    <article className="w-full mx-auto  py-16">
+    <article className="w-full mx-auto  py-10">
       {/* Header */}
       {title && (
         <h1 className="font-serif text-4xl font-bold tracking-tight text-zinc-900 mb-4 leading-tight">
