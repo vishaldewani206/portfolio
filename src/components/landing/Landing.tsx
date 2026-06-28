@@ -5,6 +5,7 @@ import { Banner } from "./Banner"
 import { Header } from "./Header"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
+import Image from "next/image"
 
 export const Landing = () => {
   
@@ -45,10 +46,16 @@ export const Landing = () => {
 
       <Header />
 
-      <VideoBackground
-      poster="/poster.jpg"
-      source={"https://www.pexels.com/download/video/33230270/"}
-      />
+      <div className="fixed inset-0 w-full h-full overflow-hidden">
+        <Image
+          src="/images/main.png"
+          alt="main"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-blue-800/20" />
+      </div>
 
       <Banner />
 

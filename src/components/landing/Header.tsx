@@ -1,10 +1,21 @@
 "use client"
 import { ArrowRight } from "lucide-react"
+import { Badge } from "./Badge";
 
 export const Header = () => {
 
   const SKILLS = ["TypeScript & Next.js", "Node.JS", "PostgreSQL & MongoDB", "AI Integration"]
 
+  const BADGES = [
+    {
+      link: "https://www.credly.com/badges/64ddef98-07bd-4389-9d33-36cbca153e7d/public_url",
+      image: "/images/gen-ai-ibm-badge.png"
+    },
+    {
+      link: "https://www.credly.com/badges/931e71e0-473c-460e-b387-34ecec01ce5f/public_url",
+      image: "/images/google-ai-badge.png"
+    }
+  ]
   
 
   return (
@@ -18,7 +29,11 @@ export const Header = () => {
         <div className='flex flex-wrap justify-between  text-gray-300 bio'>
           <div className='grow max-w-120 mb-6 lg:mb-0'>
             <h2 className='text-3xl font-bold text-secondary font-heading'>Software Engineer</h2>
-            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="64ddef98-07bd-4389-9d33-36cbca153e7d" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+            <div className="flex gap-4 my-4">
+              {BADGES.map((badge)=>(
+                <Badge link={badge.link} image={badge.image} key={badge.link} />
+              ))}
+            </div>
           </div>
 
           <div className="flex justify-between gap-6 flex-wrap grow">
