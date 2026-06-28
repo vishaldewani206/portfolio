@@ -1,8 +1,9 @@
 import type { Editor } from '@tiptap/react'
 import { uploadToCloudinary } from './uploadImage'
+import { Node } from '@tiptap/pm/model';
 
-function getImageNode(editor: Editor, src: string) {
-  let found: { pos: number; node: any } | null = null
+function getImageNode(editor: Editor, src: string): { pos: number; node: Node } | null {
+  let found: { pos: number; node: Node } | null = null
   editor.state.doc.descendants((node, pos) => {
     if (node.type.name === 'image' && node.attrs.src === src) {
       found = { pos, node }
@@ -15,7 +16,7 @@ function getImageNode(editor: Editor, src: string) {
 function updateImageAttrs(editor: Editor, src: string, attrs: Record<string, string | null>) {
   const found = getImageNode(editor, src)
   if (!found) return
-  const { pos, node } = found
+  const { pos, node } = found as { pos: number; node: Node }
   editor.view.dispatch(
     editor.state.tr.setNodeMarkup(pos, undefined, { ...node.attrs, ...attrs })
   )
@@ -24,7 +25,7 @@ function updateImageAttrs(editor: Editor, src: string, attrs: Record<string, str
 function removeImage(editor: Editor, src: string) {
   const found = getImageNode(editor, src)
   if (!found) return
-  const { pos, node } = found
+  const { pos, node } = found as { pos: number; node: Node }
   editor.view.dispatch(
     editor.state.tr.delete(pos, pos + node.nodeSize)
   )
