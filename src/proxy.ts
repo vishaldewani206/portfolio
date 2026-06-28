@@ -54,7 +54,6 @@ export const config = {
   matcher: [
     '/dashboard/:path*',
     '/login',
-    // explicitly exclude public routes from matcher for performance
-    '/((?!_next/static|_next/image|favicon.ico|api).*)',
+    '/((?!_next/static|_next/image|favicon.ico|images|fonts|icons|api).*)'
   ],
 }
