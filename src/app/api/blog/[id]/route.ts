@@ -1,5 +1,6 @@
 import Blog from "@/app/model/Blog"
 import { connectDB } from "@/lib/db"
+import { requireAuth } from "@/lib/requireAuth"
 import { NextResponse } from "next/server"
 
 type Params = { params: Promise<{ id: string }> }
@@ -7,8 +8,6 @@ type Params = { params: Promise<{ id: string }> }
 export async function GET(_req: Request, { params }: Params) {
   await connectDB()
   const { id } = await params
-  console.log('hit');
-
 
   const blog = await Blog.findById(id)
   if (!blog) {
@@ -22,6 +21,14 @@ export async function GET(_req: Request, { params }: Params) {
 export async function PUT(req: Request, {params}: Params ) {
   try {
     await connectDB()
+
+    const auth = await requireAuth()
+    if(!auth.success) return auth.response
+    const {user} = auth
+    if(user.role != "admin") {
+      return NextResponse.json({error: "Unauthorized"})
+    }
+
     const {id} = await params
     const {title, description, content, cover} = await req.json()
     const blog = await Blog.findById(id);
@@ -45,6 +52,29 @@ export async function PUT(req: Request, {params}: Params ) {
     console.error(error)
     return NextResponse.json({
       success:false
-    })
+    }, {status: 500})
+  }
+}
+
+
+export async function DELETE(req: Request, {params}: Params) {
+  try{
+    await connectDB()
+    const auth = await requireAuth()
+    if(!auth.success) return auth.response
+    const {user} = auth
+    if(user.role != "admin") {
+      return NextResponse.json({error: "Unauthorized"})
+    }
+
+    const {id} = await params
+
+    await Blog.findByIdAndDelete(id)
+
+    return NextResponse.json({success:true}, {status: 200})
+
+
+  }catch{
+    return NextResponse.json({success:false}, {status: 500})
   }
 }

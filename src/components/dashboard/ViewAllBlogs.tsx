@@ -89,7 +89,7 @@ export function ViewAllBlogs() {
         <Table>
           <TableHeader>
             <TableRow className="bg-zinc-50">
-              <TableHead className="w-[400px]">Title</TableHead>
+              <TableHead className="w-100">Title</TableHead>
               <TableHead className="">Views</TableHead>
               <TableHead>Published</TableHead>
               <TableHead className="text-right">Actions</TableHead>
@@ -108,8 +108,8 @@ export function ViewAllBlogs() {
               const blog = blogsMap[id]
               if (!blog) return null
               return (
-                <TableRow key={id}>
-                  <TableCell className="font-medium max-w-[400px]">
+                <TableRow  key={id}>
+                  <TableCell  onClick={()=> router.push(`/blog/${id}`)} className="font-medium max-w-100 cursor-pointer">
                     <div>
                       <p className="truncate font-serif">{blog.title}</p>
                       <p className="text-xs text-zinc-400 truncate mt-0.5">
