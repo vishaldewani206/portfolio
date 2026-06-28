@@ -96,7 +96,7 @@ function CodeBlockComponent({ node, updateAttributes, extension }: any) {
         </select>
       </div>
       <pre className="mt-0! rounded-t-none! bg-zinc-900 text-zinc-100 p-4 rounded-b-lg overflow-auto">
-        <NodeViewContent as="code" />
+        <NodeViewContent as={"code" as "div"} />
       </pre>
       {language === 'mermaid' && code.trim() && (
         <div className="border border-zinc-200 rounded-lg p-4 mt-2 bg-white">
