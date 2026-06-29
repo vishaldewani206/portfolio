@@ -33,6 +33,8 @@ export type BlogPageData = {
 export type IComment = {
   _id: string
   comment: string;
+  blogId: string;
+  userId: string;
   createdAt: Date;
   updatedAt: Date;
   userSnapshot: {

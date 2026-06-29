@@ -2,13 +2,12 @@
 
 import { useEffect, useCallback, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { MoreHorizontalIcon, Pencil, Trash2 } from 'lucide-react'
+import { MoreHorizontalIcon, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import {
@@ -30,33 +29,50 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
 import { PaginationSystem } from '@/components/Pagination'
-import { useBlogStore } from '@/store/useBlogs'
-import { getBlogs, deleteBlog } from '@/lib/use-fetch-blogs'
 import { useLoading } from '@/lib/loading'
 import { toast } from 'sonner'
+import { adminDeleteComment, getAdminComments } from '@/lib/useComment'
 
 const LIMIT = 10
 
-export function ViewAllBlogs() {
+interface CommentTypes  {
+  _id: string
+  comment: string;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userSnapshot: {
+    name: string;
+    image: string;
+  };
+  blogId: {
+    _id: string
+    title: string
+  }
+}
+
+export function ViewAllComments() {
   const router = useRouter()
   const { show, hide } = useLoading()
 
-  const blogsMap = useBlogStore((state) => state.blogsMap)
-  const ids = useBlogStore((state) => state.ids)
-  const page = useBlogStore((state) => state.page)
-  const totalPages = useBlogStore((state) => state.totalPages)
-  const setPage = useBlogStore((state) => state.setPage)
-  const removeBlog = useBlogStore((state) => state.removeBlog)
+
+    const [page, setPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(0)
+    const [totalComments, setTotalComments] = useState(0)
+    const [comments, setComments] = useState<CommentTypes[]>([])
 
   const [deleteId, setDeleteId] = useState<string | null>(null)
   const [deleting, setDeleting] = useState(false)
 
-  const fetchBlogs = useCallback(async (p: number) => {
+  const fetchComments = useCallback(async (p: number) => {
     show()
     try {
-      const data = await getBlogs(p, LIMIT)
+      const data = await getAdminComments(p, LIMIT)
       console.log(data);
-      setPage(data.blogs, data.page, data.totalPages)
+      setPage(data.page)
+      setTotalComments(data.total)
+      setTotalPages(data.totalPages)
+      setComments(data.comments)
     } finally {
       hide()
     }
@@ -64,19 +80,23 @@ export function ViewAllBlogs() {
   }, [])
 
   useEffect(() => {
-    fetchBlogs(1)
+    fetchComments(1)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const removeComment = ()=>{
+    setComments(comments.filter((e)=> e._id != deleteId))
+  }
 
   const handleDelete = async () => {
     if (!deleteId) return
     setDeleting(true)
     try {
-      await deleteBlog(deleteId)
-      removeBlog(deleteId)
-      toast.success('Blog deleted')
+      await adminDeleteComment(deleteId)
+      removeComment()
+      toast.success('Comment deleted')
     } catch {
-      toast.error('Failed to delete blog')
+      toast.error('Failed to delete comment')
     } finally {
       setDeleting(false)
       setDeleteId(null)
@@ -89,47 +109,36 @@ export function ViewAllBlogs() {
         <Table>
           <TableHeader>
             <TableRow className="bg-zinc-50">
-              <TableHead className="w-100">Title</TableHead>
-              <TableHead className="text-center">Views</TableHead>
-              <TableHead className="text-center">Likes</TableHead>
-              <TableHead className="text-center">Comments</TableHead>
-              <TableHead className='text-center'>Published</TableHead>
+              <TableHead className="w-100">Comment</TableHead>
+              <TableHead className="">Blog Name</TableHead>
+              <TableHead>Published</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {ids.length === 0 && (
+            {comments.length === 0 && (
               <TableRow>
                 <TableCell colSpan={3} className="text-center text-zinc-400 py-16">
-                  No blogs yet.
+                  No comment yet.
                 </TableCell>
               </TableRow>
             )}
 
-            {ids.map((id) => {
-              const blog = blogsMap[id]
-              if (!blog) return null
+            {comments.map((comment) => {
+              if (!comment) return null
               return (
-                <TableRow  key={id}>
-                  <TableCell  onClick={()=> router.push(`/blog/${id}`)} className="font-medium max-w-100 cursor-pointer">
+                <TableRow  key={comment._id}>
+                  <TableCell  onClick={()=> router.push(`/blog/${comment?.blogId?._id}`)} className="font-medium max-w-100 cursor-pointer">
                     <div>
-                      <p className="truncate font-serif">{blog.title}</p>
-                      <p className="text-xs text-zinc-400 truncate mt-0.5">
-                        {blog.description}
-                      </p>
+                      <p className="truncate font-serif">{comment?.comment}</p>
+                      
                     </div>
                   </TableCell>
-                  <TableCell className='text-center'>
-                    {blog.views}
+                  <TableCell className='truncate'>
+                    {comment?.blogId?.title}
                   </TableCell>
-                  <TableCell className='text-center'>
-                    {blog.likes}
-                  </TableCell>
-                  <TableCell className='text-center'>
-                    {blog.comments}
-                  </TableCell>
-                  <TableCell className="text-sm text-zinc-500 text-center">
-                    {new Date(blog.createdAt).toLocaleDateString('en-US', {
+                  <TableCell className="text-sm text-zinc-500">
+                    {new Date(comment.createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
@@ -145,16 +154,8 @@ export function ViewAllBlogs() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
-                          onClick={() => router.push(`/dashboard/write/${id}`)}
-                          className="gap-2"
-                        >
-                          <Pencil size={14} />
-                          Edit
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem
                           variant="destructive"
-                          onClick={() => setDeleteId(id)}
+                          onClick={() => setDeleteId(comment._id)}
                           className="gap-2"
                         >
                           <Trash2 size={14} />
@@ -173,16 +174,16 @@ export function ViewAllBlogs() {
       <PaginationSystem
         page={page}
         totalPages={totalPages}
-        onPageChange={fetchBlogs}
+        onPageChange={fetchComments}
       />
 
       {/* delete confirmation */}
       <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete blog?</AlertDialogTitle>
+            <AlertDialogTitle>Delete Comment?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. The blog will be permanently deleted.
+              This action cannot be undone. The comment will be permanently deleted.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

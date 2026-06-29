@@ -31,7 +31,6 @@ export async function POST(req: Request, { params }: Params) {
           image: user.image ?? '',
         },
       }),
-      // increment comment count on the blog
       Blog.findByIdAndUpdate(id, { $inc: { comments: 1 } }),
     ])
 
@@ -53,13 +52,12 @@ export async function GET(req: Request, { params }: Params) {
     const limit = parseInt(searchParams.get('limit') ?? '10')
     const skip = (page - 1) * limit
 
-    // get total from Blog.comments field instead of countDocuments
     const [comments, blog] = await Promise.all([
       Comment.find({ blogId: blogObjectId })
         .skip(skip)
         .limit(limit)
         .sort({ createdAt: -1 }),
-      Blog.findById(id, 'comments'), // only fetch the comments count field
+      Blog.findById(id, 'comments'), 
     ])
 
     const total = blog?.comments ?? 0

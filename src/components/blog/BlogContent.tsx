@@ -27,7 +27,7 @@ export const BlogContent = memo(function BlogContent({ html }: Props) {
       )
 
       mermaidBlocks.forEach((block) => block.setAttribute('data-mermaid', 'true'))
-      mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' })
+      mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' })
 
       for (const block of mermaidBlocks) {
         const pre = block.closest('pre')
