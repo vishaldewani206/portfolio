@@ -30,14 +30,14 @@ export default function BlogPage() {
       hide()
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []) // empty — show/hide/setPage/setLoading are stable store refs
+  }, []) 
 
   useEffect(() => {
     if (ids.length === 0) {
       fetchBlogs(1)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []) // run once on mount only
+  }, []) 
 
   return (
     <section className="py-8">

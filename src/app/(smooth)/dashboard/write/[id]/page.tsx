@@ -36,7 +36,6 @@ export default function EditBlog() {
   const initRef = useRef(false)
 
 
-  // fetch blog if not in store
   useEffect(() => {
     if (!id || blog) return
 
@@ -45,7 +44,7 @@ export default function EditBlog() {
       try {
         const data = await getBlogById(id)
         if (!data) { setNotFound(true); return }
-        upsertBlog(data)
+        upsertBlog(data.blog)
       } catch {
         setNotFound(true)
       } finally {
@@ -57,11 +56,10 @@ export default function EditBlog() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  // populate form once blog is available
   useEffect(() => {
     if (!blog || initRef.current) return
     initRef.current = true
-    // single setState call — no cascading renders
+  
     setForm({
       title: blog.title,
       description: blog.description,
@@ -83,7 +81,7 @@ export default function EditBlog() {
     try {
       console.log(id);
       const updated = await updateBlog(id, form.title, form.description, form.html, form.cover)
-      upsertBlog(updated.blog) // update store with new data
+      upsertBlog(updated.blog) 
       toast.success('Blog updated', { position: 'top-right', richColors: true })
     } catch(err) {
       console.log(err);
@@ -148,6 +146,9 @@ export default function EditBlog() {
             title={form.title || 'Untitled'}
             cover={form.cover}
             date={blog.createdAt}
+            likeCount={0}
+            liked={false}
+            blogId='123'
           />
         ) : (
           <BlogEditor initialContent={form.html} onChange={(val) => setForm((f) => ({ ...f, html: val }))} />
