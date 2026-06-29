@@ -2,6 +2,7 @@ import { timeAgo } from '@/lib/format-date'
 import { Eye, Heart, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import ShareButtons from './ShareButtons'
 interface  BlogTypes{
   title: string
   description: string
@@ -40,6 +41,14 @@ export const Blog = ({title, description,cover, date, to, totalComments, totalLi
               <MessageCircle />
               {totalComments}
               </div>
+            </div>
+            <div
+              onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              }}
+            >
+              <ShareButtons url={`https://vishaldewani.vercel.app${to}`} title={title} />
             </div>
           </div>
         </div>

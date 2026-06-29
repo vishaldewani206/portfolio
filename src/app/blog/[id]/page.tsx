@@ -67,6 +67,7 @@ export default function BlogPostPage() {
         Go Back
       </Button>
       <BlogDisplay
+        id={blogData?.blog?._id}
         html={blogData?.blog.content}
         title={blogData?.blog.title}
         cover={blogData?.blog.cover}

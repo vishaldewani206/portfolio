@@ -4,8 +4,10 @@ import { Likes } from './Likes'
 import { CommentSystem } from './CommentSystem'
 import { BlogContent } from './BlogContent'
 import { timeAgo } from '@/lib/format-date'
+import ShareButtons from './ShareButtons'
 
 interface Props {
+  id?: string
   html: string
   title?: string
   cover?: string
@@ -20,7 +22,7 @@ interface Props {
 
 export function BlogDisplay({
   html, title, author = 'Vishal Dewani', date,
-  readingTime, cover, liked, likeCount, blogId, preview
+  readingTime, cover, liked, likeCount, blogId, preview, id
 }: Props) {
   return (
     <>
@@ -54,14 +56,20 @@ export function BlogDisplay({
               )}
             </div>
           )}
-          <div className="flex gap-4">
-            {!preview && (
+          {!preview && id && (
+            <div className='flex gap-4  items-start'>
               <Likes likeCount={likeCount} liked={liked} blogId={blogId} />
-            )}
-          </div>
+              <ShareButtons title={title ?? "Blog"} url={`https://vishaldewani.vercel.app/blog/${id}`}  />
+            </div>
+          )}
         </div>
 
         <BlogContent html={html} />
+        {!preview && id && (
+            <div className='flex justify-end'>
+              <ShareButtons title={title ?? "Blog"} url={`https://vishaldewani.vercel.app/blog/${id}`}  />
+            </div>
+          )}
       </article>
 
       {!preview && (
