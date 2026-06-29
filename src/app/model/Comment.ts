@@ -4,9 +4,14 @@ import mongoose, {model, models, Schema} from "mongoose"
 export interface IBlog {
   _id?: string;
   comment: string;
-  user: mongoose.Types.ObjectId;
-  likes: number;
-  dislikes: number;
+  userId: mongoose.Types.ObjectId;
+  blogId: mongoose.Types.ObjectId;
+  userSnapshot: {
+    name: string
+    image: string
+  },
+  created_at: Date;
+  updated_at: Date
 }
 
 
@@ -15,20 +20,19 @@ const commentSchema = new Schema<IBlog>({
     type: String,
     required: true
   },
-  user: {
+  userId: {
     type: mongoose.Types.ObjectId,
     ref: "User"
   },
-  likes: {
-    type: Number,
-    default: 0
+  blogId: {
+    type: mongoose.Types.ObjectId,
+    ref: "Blog"
   },
-  dislikes: {
-    type: Number,
-    default: 0
+  userSnapshot: {
+    name: { type: String, required: true },
+    image: { type: String, default: '' },
   },
-  
-})
+}, {timestamps: true})
 
 const Comment = models.Comment || model("Comment", commentSchema)
 export default Comment

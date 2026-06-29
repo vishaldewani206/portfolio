@@ -1,10 +1,10 @@
 'use client'
 import Link from 'next/link'
 
-export default function NotFound() {
+export default function NotFound({link="/"}: {link?:string}) {
   return (
-    <main className="flex min-h-screen items-center justify-center px-6 py-16 ">
-      <div className="w-full max-w-xl rounded-2xl border p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-sm">
+    <main className="flex min-h-screen items-center justify-center px-6 py-16  ">
+      <div className="w-full max-w-xl rounded-2xl border p-8 text-center  shadow-black/30">
         <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
           404 Error
         </p>
@@ -14,10 +14,10 @@ export default function NotFound() {
         </p>
         <div className="flex flex-col justify-center gap-3 sm:flex-row">
           <Link
-            href="/"
+            href={link}
             className="rounded-full bg-primary  px-6 py-3 font-medium text-white transition hover:bg-primary"
           >
-            Go home
+            Go Back
           </Link>
         </div>
       </div>

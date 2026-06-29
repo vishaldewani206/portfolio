@@ -1,4 +1,4 @@
-import mongoose, {model, models, Schema} from "mongoose"
+import {model, models, Schema} from "mongoose"
 
 
 export interface IBlog {
@@ -10,8 +10,7 @@ export interface IBlog {
   publish: boolean;
   views: number;
   likes: number;
-  dislikes: number;
-  comments: mongoose.Types.ObjectId;
+  comments: number;
   created_at: Date;
   updated_at: Date;
 }
@@ -46,13 +45,9 @@ const blogSchema = new Schema<IBlog>({
     type: Number,
     default: 0
   },
-  dislikes: {
+  comments:{
     type: Number,
     default: 0
-  },
-  comments:{
-    type: mongoose.Types.ObjectId,
-    ref: "Comment"
   }
 }, {timestamps: true})
 

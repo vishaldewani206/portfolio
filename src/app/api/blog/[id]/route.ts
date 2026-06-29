@@ -1,4 +1,5 @@
 import Blog from "@/app/model/Blog"
+import Like from "@/app/model/Like"
 import { connectDB } from "@/lib/db"
 import { requireAuth } from "@/lib/requireAuth"
 import { NextResponse } from "next/server"
@@ -8,13 +9,25 @@ type Params = { params: Promise<{ id: string }> }
 export async function GET(_req: Request, { params }: Params) {
   await connectDB()
   const { id } = await params
+  const auth = await requireAuth()
 
   const blog = await Blog.findById(id)
+  
   if (!blog) {
     return NextResponse.json({ error: 'Blog not found' }, { status: 404 })
   }
+  let liked = false
+  if(auth.success){
+    const {user} = auth
+    liked = !!(await Like.exists({
+      blogId: id,
+      userId: user.id,
+    }))
+  }
 
-  return NextResponse.json({ blog })
+  console.log(blog, liked);
+
+  return NextResponse.json({ blog, liked })
 }
 
 

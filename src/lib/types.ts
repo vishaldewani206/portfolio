@@ -18,6 +18,25 @@ export type Blog = {
   description: string
   cover: string
   views: number
+  likes: number
+  comments: number
   content: string
-  createdAt: string
+  createdAt: Date
+}
+
+
+export type BlogPageData = {
+  blog: Blog;
+  liked: boolean | null;
+};
+
+export type IComment = {
+  _id: string
+  comment: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userSnapshot: {
+    name: string;
+    image: string;
+  };
 }

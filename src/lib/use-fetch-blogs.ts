@@ -1,5 +1,5 @@
 import api from "./axios"
-import { Blog } from "./types"
+import { Blog, BlogPageData } from "./types"
 
 
 
@@ -37,10 +37,10 @@ export const updateBlog = async(
   return res.data
 }
 
-export const getBlogById = async (id: string): Promise<Blog | null> => {
+export const getBlogById = async (id: string): Promise<BlogPageData | null> => {
   try {
     const res = await api.get(`/blog/${id}`)
-    return res.data.blog
+    return res.data
   } catch {
     return null
   }

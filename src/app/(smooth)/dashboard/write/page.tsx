@@ -22,7 +22,12 @@ export default function WritePage() {
       toast.error("All fields are required", {position: "top-right", richColors: true})
       return
     }
-    createBlog(title, description, html, cover)
+    await createBlog(title, description, html, cover)
+    toast.success("Blog created successfully", {richColors:true, position:"top-right"})
+    setTitle('')
+    setHtml('')
+    setDescription('')
+    setCover('')
   }
 
   return (
@@ -70,6 +75,10 @@ export default function WritePage() {
             author="You"
             date="Today"
             readingTime={2}
+            likeCount={0}
+            liked={false}
+            blogId='123'
+            preview={true}
           />
         ) : (
           <BlogEditor initialContent={html} onChange={setHtml} />

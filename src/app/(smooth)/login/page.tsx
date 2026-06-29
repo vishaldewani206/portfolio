@@ -13,7 +13,7 @@ export default function LoginPage() {
     show('Redirecting to Google...')
     await signIn.social({
       provider: 'google',
-      callbackURL: '/dashboard',
+      callbackURL: '/blog',
     })
     hide()
     setLoading(false)

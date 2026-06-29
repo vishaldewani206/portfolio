@@ -9,70 +9,72 @@ import { useLoading } from '@/lib/loading'
 import { useViewStore } from '@/store/viewStore'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
+import { BlogPageData } from '@/lib/types'
+import NotFound from '@/app/not-found'
 
 export default function BlogPostPage() {
   const { id } = useParams<{ id: string }>()
   const router = useRouter()
   const { show, hide } = useLoading()
-  const [notFound, setNotFound] = useState(false)
-
-  const blog = useBlogStore((state) => (id ? state.blogsMap[id] ?? null : null))
-  const upsertBlog = useBlogStore((state) => state.upsertBlog)
 
   const { hasViewed, markViewed } = useViewStore()
   const didView = useRef(false)
 
-  // fetch if not in store
-  useEffect(() => {
-    if (!id || blog) return
+  const [blogData, setBlogData] = useState<BlogPageData | null>(null);
+    const [fetching, setFetching] = useState(true) // true until first fetch completes
 
-    const fetch = async () => {
-      show()
+
+  useEffect(() => {
+    if (!id) return
+    show()
+    
+    const load = async () => {
+      setFetching(true)
       try {
         const data = await getBlogById(id)
-        if (!data) { setNotFound(true); return }
-        upsertBlog(data)
+        setBlogData(data)
       } catch {
-        setNotFound(true)
+        setBlogData(null)
       } finally {
+        setFetching(false)
         hide()
       }
     }
 
-    fetch()
+    load()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  // view tracking — only runs when blog is available
   useEffect(() => {
-    if (!blog?._id) return        // guard — blog must exist
-    if (didView.current) return   // StrictMode guard
-    if (hasViewed(blog._id)) return
+    if (!blogData?.blog._id) return        
+    if (didView.current) return   
+    if (hasViewed(blogData?.blog._id)) return
 
     didView.current = true
-    viewBlog(blog._id).then(() => {
-      markViewed(blog._id)
+    viewBlog(blogData?.blog._id).then(() => {
+      markViewed(blogData?.blog._id)
     })
-  }, [blog?._id]) // depends on blog._id, not blog object
+  }, [blogData?.blog?._id]) 
 
-  if (notFound) {
-    return <p className="text-center py-20 text-zinc-400">Blog not found.</p>
-  }
 
-  if (!blog) return null  // loading state — SessionGate/loader handles the spinner
+  if (fetching) return null
+  if (!blogData?.blog) return <NotFound link='/blog' /> 
 
   return (
-    <>
-      <Button onClick={()=> router.push("/dashboard")} variant={"outline"} className='mt-4'>
+    <div>
+      <Button onClick={()=> router.push("/blog")} variant={"outline"} className='mt-4'>
         <ArrowLeft />
         Go Back
       </Button>
       <BlogDisplay
-        html={blog.content}
-        title={blog.title}
-        cover={blog.cover}
-        date={blog.createdAt}
+        html={blogData?.blog.content}
+        title={blogData?.blog.title}
+        cover={blogData?.blog.cover}
+        date={blogData?.blog.createdAt}
+        liked={blogData?.liked}
+        likeCount={blogData?.blog.likes}
+        blogId={blogData?.blog._id}
       />
-    </>
+    </div>
   )
 }

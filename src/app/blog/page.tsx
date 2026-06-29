@@ -53,6 +53,9 @@ export default function BlogPage() {
               description={blog.description}
               cover={blog.cover}
               date={blog.createdAt}
+              totalComments={blog.comments}
+              totalLikes={blog.likes}
+              totalViews={blog.views}
             />
           )
         })}

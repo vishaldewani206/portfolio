@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type ViewStore = {
-  viewedBlogs: Record<string, number>; // blogId -> timestamp
+  viewedBlogs: Record<string, number>; 
   markViewed: (blogId: string) => void;
   hasViewed: (blogId: string) => boolean;
 };
