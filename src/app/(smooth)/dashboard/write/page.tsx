@@ -73,7 +73,7 @@ export default function WritePage() {
             title={title || 'Untitled'}
             cover={cover}
             author="You"
-            date="Today"
+            date={new Date()}
             readingTime={2}
             likeCount={0}
             liked={false}
