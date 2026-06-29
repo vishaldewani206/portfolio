@@ -1,6 +1,8 @@
 "use client"
 import { ArrowRight } from "lucide-react"
 import { Badge } from "./Badge";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export const Header = () => {
 
@@ -45,6 +47,12 @@ export const Header = () => {
                   </li>
                 ))}
               </ul>
+              <Link className="md:hidden block" href={"/blog"}>
+                <Button variant={"secondary"} size={"lg"} className="mt-4 rounded-full px-5 py-5">
+                  View Blogs 
+                  <ArrowRight />
+                </Button>
+              </Link>
             </div>
 
             <div className='grow max-w-130 text-xl space-y-4 hidden md:block'>

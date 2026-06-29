@@ -38,13 +38,13 @@ export function BlogDisplay({
           <img
             src={cover}
             alt={title ?? 'Cover'}
-            className="w-full h-72 object-contain rounded-xl mb-10"
+            className="w-full h-72 object-contain rounded-xl md:mb-10 mb-0"
           />
         )}
 
-        <div className="flex justify-between">
+        <div className="flex md:flex-row flex-col md:justify-between">
           {(author || date || readingTime) && (
-            <div className="flex items-center gap-3 mb-10 text-sm text-zinc-500">
+            <div className="flex items-center gap-3 md:mb-10 mb-4 text-sm text-zinc-500">
               {author && <span className="font-medium text-zinc-700">{author}</span>}
               {author && date && <span>·</span>}
               {date && <span>{timeAgo(date)}</span>}
@@ -57,7 +57,7 @@ export function BlogDisplay({
             </div>
           )}
           {!preview && id && (
-            <div className='flex gap-4  items-start'>
+            <div className='flex gap-4  items-start justify-between md:justify-stretch'>
               <Likes likeCount={likeCount} liked={liked} blogId={blogId} />
               <ShareButtons title={title ?? "Blog"} url={`https://vishaldewani.vercel.app/blog/${id}`}  />
             </div>
