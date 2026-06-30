@@ -55,7 +55,6 @@ export function ViewAllBlogs() {
     show()
     try {
       const data = await getBlogs(p, LIMIT)
-      console.log(data);
       setPage(data.blogs, data.page, data.totalPages)
     } finally {
       hide()

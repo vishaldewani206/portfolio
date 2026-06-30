@@ -25,7 +25,6 @@ export async function GET(_req: Request, { params }: Params) {
     }))
   }
 
-  console.log(blog, liked);
 
   return NextResponse.json({ blog, liked })
 }

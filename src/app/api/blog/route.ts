@@ -4,10 +4,6 @@ import { requireAuth } from "@/lib/requireAuth";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-  // const auth = await requireAuth()
-  // if (!auth.success || auth.user.role !) return auth.response
-  // console.log(auth);
-  // const {user} = auth
   await connectDB()
 
   const { searchParams } = new URL(req.url)
@@ -43,7 +39,6 @@ export async function POST(req: Request) {
   }
 
   const {title, description, cover, content} =  await req.json()
-  console.log(title,description, cover,content);
   if(!title || !description || !cover || !content){
     return NextResponse.json({error: "all fields are required"})
   }

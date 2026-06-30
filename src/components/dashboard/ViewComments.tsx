@@ -68,7 +68,6 @@ export function ViewAllComments() {
     show()
     try {
       const data = await getAdminComments(p, LIMIT)
-      console.log(data);
       setPage(data.page)
       setTotalComments(data.total)
       setTotalPages(data.totalPages)

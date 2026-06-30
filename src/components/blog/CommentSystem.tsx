@@ -36,7 +36,6 @@ export const CommentSystem = ({blogId}:{blogId: string}) => {
       setTotalPages(data.totalPages)
       setTotalComments(data.total)
       setComments(data.comments)
-      console.log(data);
     } finally {
       setLoading(false)
       hide()
@@ -53,7 +52,6 @@ export const CommentSystem = ({blogId}:{blogId: string}) => {
 
   const handleCreateComment = async () => {
     const res = await createComment(blogId, comment)
-    console.log(res);
     setComments([ res ,...comments])
     setComment('')
   }

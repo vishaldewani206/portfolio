@@ -189,7 +189,6 @@
 
 
 
-/* Editor paragraph spacing */
 .ProseMirror p {
   margin-block: 1.5rem;
 }
@@ -197,7 +196,6 @@
   margin-bottom: 0;
 }
 
-/* Display/preview paragraph spacing */
 .blog-content p {
   margin-block: 1.75rem;
   line-height: 1.85;
@@ -216,7 +214,6 @@
 .blog-content li p { margin-bottom: 0; }
 
 
-/* prevent prose from washing out highlight.js token colors */
 .blog-content pre code.hljs {
   background: #1d1d1d;
   font-size: 0.9rem;
@@ -224,7 +221,7 @@
 }
 
 .blog-content pre {
-  padding: 1.25rem 1.5rem;
+  padding-block: 1.2rem;
   border-radius: 0.75rem;
   overflow-x: auto;
 }
@@ -247,4 +244,28 @@
 
 .ProseMirror blockquote p {
   margin-bottom: 0;
+}
+
+
+.blog-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-content pre code {
+  white-space: pre;
+  word-break: normal;
+}
+
+.blog-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.blog-content pre,
+.blog-content table {
+  display: block;
+  max-width: 90vw;
+  overflow-x: auto;
 }

@@ -20,7 +20,6 @@ export async function GET(req: Request) {
   try {
     const page = Math.max(1, parseInt(searchParams.get('page') ?? '1'))
     const limit = parseInt(searchParams.get('limit') ?? '10')
-    console.log("limit", limit);
     const skip = (page - 1) * limit
 
     const [comments, total] = await Promise.all([

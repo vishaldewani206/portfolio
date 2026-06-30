@@ -32,7 +32,6 @@ export const updateBlog = async(
   content: string,
   cover: string
 ) =>{
-  console.log(id, title, description, content, cover);
   const res = await api.put(`/blog/${id}`, {title, description, content, cover})
   return res.data
 }

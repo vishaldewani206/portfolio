@@ -70,7 +70,6 @@ export default function EditBlog() {
   }, [blog])
   const handleUpdate = async () => {
     if (!id) return
-    console.log(form);
     if (!form.title || !form.html || !form.description || !form.cover) {
       toast.error('All fields are required', { position: 'top-right', richColors: true })
       return
@@ -79,7 +78,6 @@ export default function EditBlog() {
     setPublishing(true)
     show('Saving...')
     try {
-      console.log(id);
       const updated = await updateBlog(id, form.title, form.description, form.html, form.cover)
       upsertBlog(updated.blog) 
       toast.success('Blog updated', { position: 'top-right', richColors: true })
@@ -105,8 +103,8 @@ export default function EditBlog() {
           <ArrowLeft />
           Go Back
         </Button>
-        <div className="w-full mx-auto px-4 flex items-start justify-between gap-6">
-          <div className="w-full max-w-2xl">
+        <div className="w-full mx-auto px-4 flex flex-col md:flex-row items-start justify-between gap-6">
+          <div className="w-full max-w-2xl order-2 md:order-1">
             <Input
               type="text"
               value={form.title}
@@ -124,7 +122,7 @@ export default function EditBlog() {
             <CoverUpload value={form.cover} onChange={(url) => setForm((f) => ({ ...f, cover: url }))} />
           </div>
 
-          <div className="flex gap-3 shrink-0 items-center pt-1">
+          <div className="flex gap-3 shrink-0 items-center pt-1 order-1 md:order-2 ml-auto md:ml-0">
             <Button variant="outline" onClick={() => setPreview((p) => !p)}>
               {preview ? 'Edit' : 'Preview'}
             </Button>
